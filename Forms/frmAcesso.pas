@@ -19,6 +19,7 @@ type
     procedure btn2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure img2Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,6 +45,11 @@ procedure TFormAcesso.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
   FormAcesso:= Nil;
+end;
+
+procedure TFormAcesso.FormShow(Sender: TObject);
+begin
+  btn2.Brush.Color := clWhite;
 end;
 
 procedure TFormAcesso.img2Click(Sender: TObject);

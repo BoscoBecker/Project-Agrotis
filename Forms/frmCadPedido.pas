@@ -12,7 +12,6 @@ type
     lbl1: TLabel;
     shp2: TShape;
     img2: TImage;
-    img1: TImage;
     shp1: TShape;
     grp1: TGroupBox;
     dbgrd1: TDBGrid;
@@ -38,6 +37,7 @@ type
     edt5: TEdit;
     lbl7: TLabel;
     lbl9: TLabel;
+    img1: TImage;
   private
     { Private declarations }
   public
