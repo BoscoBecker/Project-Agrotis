@@ -1,0 +1,40 @@
+Boa tarde João,
+
+Conforme conversado, segue abaixo a estrutura das tabelas e campos para implementar o teste em Delphi.
+
+Requisitos
+- Fazer um formulário principal com menu 
+- Implementar os cadastros com as opções de (Novo, Alterar, Excluir, Salvar e Cancelar) para cada uma das tabelas
+
+PRODUTO
+Código do Produto
+Descrição
+
+** RELACIONAMENTO ENTRE "PRODUTO E ITENS PEDIDO"
+==========================================
+PEDIDO
+Código
+Referência
+Nº do Pedido
+Data Emissão
+Código do Cliente
+Tipo Operação - Entrada/Saída
+Total do Pedido (calculado a partir do somatório do TOTAL DOS ITENS)
+==========================================
+ITENS DO PEDIDO
+Código do Produto
+Quantidade
+Valor Unitário
+Total do item
+===========================================
+PARCELA DO PEDIDO
+Código da Parcela
+Forma de Pagamento (A Vista - A Prazo)
+Data de Vencimento
+Valor da Parcela
+VALIDAÇÃO: o TOTAL DA(S) PARCELA(S) não pode ser maior do que o TOTAL DO PEDIDO
+===========================================
+
+Assim que finalizar, pode nos disponibilizar no seu github e avisar.
+
+Atenciosamente,
