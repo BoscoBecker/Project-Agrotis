@@ -9,7 +9,6 @@ uses
 
 type
   TFormPrincipal = class(TForm)
-    img1: TImage;
     mm1: TMainMenu;
     Cadastros1: TMenuItem;
     Sobre1: TMenuItem;
