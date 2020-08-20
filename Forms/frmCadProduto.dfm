@@ -14,6 +14,7 @@ object FormCadProduto: TFormCadProduto
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object shp2: TShape
@@ -11356,65 +11357,97 @@ object FormCadProduto: TFormCadProduto
       ParentFont = False
     end
     object dbgrd1: TDBGrid
-      Left = 8
+      Left = 3
       Top = 39
       Width = 836
       Height = 176
+      DataSource = dsProduto
+      Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleHotTrack]
+      ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo_produto'
+          Title.Caption = 'Produto'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Title.Caption = 'Descri'#231#227'o'
+          Width = 700
+          Visible = True
+        end>
     end
     object btnCancelar: TButton
-      Left = 764
+      Left = 332
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Cancelar'
       TabOrder = 1
+      OnClick = btnCancelarClick
     end
     object btnSalvar: TButton
-      Left = 683
+      Left = 251
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Salvar'
       TabOrder = 2
+      OnClick = btnSalvarClick
     end
     object btnExcluir: TButton
-      Left = 602
+      Left = 170
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Excluir'
       TabOrder = 3
+      OnClick = btnExcluirClick
     end
     object btnAlterar: TButton
-      Left = 521
+      Left = 89
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Alterar'
       TabOrder = 4
+      OnClick = btnAlterarClick
     end
     object btnNovo: TButton
-      Left = 440
+      Left = 8
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Novo'
       TabOrder = 5
+      OnClick = btnNovoClick
+    end
+    object btnFechar: TButton
+      Left = 769
+      Top = 221
+      Width = 75
+      Height = 25
+      Caption = '&Fechar'
+      TabOrder = 6
+      OnClick = btnFecharClick
     end
   end
-  object SearchBox1: TSearchBox
+  object PesquisaProduto: TSearchBox
     Left = 734
     Top = 254
     Width = 124
     Height = 21
     TabOrder = 1
     TextHint = 'Pesquisar Produtos'
+    OnChange = PesquisaProdutoChange
   end
   object grp2: TGroupBox
     Left = 14
@@ -11424,8 +11457,8 @@ object FormCadProduto: TFormCadProduto
     Caption = 'Produtos'
     TabOrder = 2
     object lbl2: TLabel
-      Left = 16
-      Top = 52
+      Left = 24
+      Top = 32
       Width = 117
       Height = 19
       Caption = 'C'#243'digo Produto:'
@@ -11437,8 +11470,8 @@ object FormCadProduto: TFormCadProduto
       ParentFont = False
     end
     object lbl3: TLabel
-      Left = 330
-      Top = 52
+      Left = 290
+      Top = 32
       Width = 128
       Height = 19
       Caption = 'Descri'#231#227'o Produto'
@@ -11449,21 +11482,29 @@ object FormCadProduto: TFormCadProduto
       Font.Style = []
       ParentFont = False
     end
-    object edtCodProduto: TEdit
-      Left = 139
-      Top = 52
+    object dbedtcodigo_produto: TDBEdit
+      Left = 147
+      Top = 33
       Width = 121
       Height = 21
+      DataField = 'codigo_produto'
+      DataSource = dsProduto
       Enabled = False
       TabOrder = 0
-      TextHint = '0'
     end
-    object mmoDescProduto: TMemo
-      Left = 464
-      Top = 29
-      Width = 380
-      Height = 84
+    object dbmmodescricao: TDBMemo
+      Left = 424
+      Top = 32
+      Width = 417
+      Height = 89
+      DataField = 'descricao'
+      DataSource = dsProduto
+      Enabled = False
       TabOrder = 1
     end
+  end
+  object dsProduto: TDataSource
+    Left = 22
+    Top = 186
   end
 end

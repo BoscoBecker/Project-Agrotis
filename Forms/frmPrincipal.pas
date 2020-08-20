@@ -28,6 +28,7 @@ type
     procedure CadastroPedido1Click(Sender: TObject);
     procedure CadastroProduto1Click(Sender: TObject);
     procedure ItemPedido1Click(Sender: TObject);
+    procedure Parcelapedido1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,7 +42,8 @@ implementation
 
 {$R *.dfm}
 
-uses frmAcesso, frmCadProduto, frmCadPedido,frmCadItemPedido;
+uses frmAcesso, frmCadProduto, frmCadPedido,frmCadItemPedido,
+  frmCadParcelaPedido;
 
 procedure TFormPrincipal.CadastroPedido1Click(Sender: TObject);
 begin
@@ -69,6 +71,12 @@ procedure TFormPrincipal.ItemPedido1Click(Sender: TObject);
 begin
   FormCadItemPedido := TFormCadItemPedido.Create(self);
   FormCadItemPedido.ShowModal;
+end;
+
+procedure TFormPrincipal.Parcelapedido1Click(Sender: TObject);
+begin
+  FormCadParcelaPedido := TFormCadParcelaPedido.Create(Self);
+  FormCadParcelaPedido.ShowModal;
 end;
 
 end.

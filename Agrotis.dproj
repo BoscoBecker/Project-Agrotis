@@ -121,6 +121,20 @@
             <Form>FormCadItemPedido</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Forms\frmCadParcelaPedido.pas">
+            <Form>FormCadParcelaPedido</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="DataModule\UdmConexao.pas">
+            <Form>dmConexao</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="DataModule\UdmCadProduto.pas">
+            <Form>dmCadProduto</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -11345,7 +11345,7 @@ object FormCadItemPedido: TFormCadItemPedido
     TabOrder = 0
     object lbl9: TLabel
       Left = 651
-      Top = 11
+      Top = 23
       Width = 67
       Height = 19
       Caption = 'Pesquisar'
@@ -11410,7 +11410,7 @@ object FormCadItemPedido: TFormCadItemPedido
     end
     object SearchBox1: TSearchBox
       Left = 725
-      Top = 9
+      Top = 21
       Width = 121
       Height = 21
       TabOrder = 6

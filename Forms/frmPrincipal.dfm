@@ -1,9 +1,11 @@
 object FormPrincipal: TFormPrincipal
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'Agrotis - Sistemas para o Agroneg'#243'cio '
-  ClientHeight = 559
-  ClientWidth = 1218
+  ClientHeight = 569
+  ClientWidth = 1228
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,8 +23,8 @@ object FormPrincipal: TFormPrincipal
   object img1: TImage
     Left = 0
     Top = 0
-    Width = 1218
-    Height = 540
+    Width = 1228
+    Height = 550
     Align = alClient
     AutoSize = True
     Center = True
@@ -10710,8 +10712,8 @@ object FormPrincipal: TFormPrincipal
   object img2: TImage
     Left = 0
     Top = 0
-    Width = 1218
-    Height = 540
+    Width = 1228
+    Height = 550
     Align = alClient
     AutoSize = True
     Center = True
@@ -11323,10 +11325,12 @@ object FormPrincipal: TFormPrincipal
   end
   object stat1: TStatusBar
     Left = 0
-    Top = 540
-    Width = 1218
+    Top = 550
+    Width = 1228
     Height = 19
     Panels = <>
+    ExplicitTop = 540
+    ExplicitWidth = 1218
   end
   object mm1: TMainMenu
     Left = 24
@@ -11347,11 +11351,12 @@ object FormPrincipal: TFormPrincipal
           OnClick = CadastroPedido1Click
         end
         object ItemPedido1: TMenuItem
-          Caption = 'Item Pedido'
+          Caption = 'Cadastro Item Pedido'
           OnClick = ItemPedido1Click
         end
         object Parcelapedido1: TMenuItem
-          Caption = 'Parcela Pedido'
+          Caption = 'Cadastro Parcela Pedido'
+          OnClick = Parcelapedido1Click
         end
       end
     end
