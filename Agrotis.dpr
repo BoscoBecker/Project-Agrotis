@@ -9,16 +9,20 @@ uses
   frmCadItemPedido in 'Forms\frmCadItemPedido.pas' {FormCadItemPedido},
   frmCadParcelaPedido in 'Forms\frmCadParcelaPedido.pas' {FormCadParcelaPedido},
   UdmConexao in 'DataModule\UdmConexao.pas' {dmConexao: TDataModule},
-  UdmCadProduto in 'DataModule\UdmCadProduto.pas' {dmCadProduto: TDataModule};
+  UdmCadProduto in 'DataModule\UdmCadProduto.pas' {dmCadProduto: TDataModule},
+  UdmCadPedido in 'DataModule\UdmCadPedido.pas' {dmCadPedido: TDataModule},
+  UdmCadItemPedido in 'DataModule\UdmCadItemPedido.pas' {dmCadPedidoItem: TDataModule};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TFormAcesso, FormAcesso);
   Application.CreateForm(TdmConexao, dmConexao);
+  Application.CreateForm(TFormAcesso, FormAcesso);
   Application.CreateForm(TdmCadProduto, dmCadProduto);
+  Application.CreateForm(TdmCadPedido, dmCadPedido);
+  Application.CreateForm(TdmCadPedidoItem, dmCadPedidoItem);
   Application.CreateForm(TFormPrincipal, FormPrincipal);
   Application.CreateForm(TFormCadProduto, FormCadProduto);
   Application.CreateForm(TFormCadPedido, FormCadPedido);

@@ -14,6 +14,7 @@ object FormCadPedido: TFormCadPedido
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object shp2: TShape
@@ -10712,9 +10713,9 @@ object FormCadPedido: TFormCadPedido
   object lbl1: TLabel
     Left = 8
     Top = 8
-    Width = 360
+    Width = 342
     Height = 48
-    Caption = 'Cadastro de Pedidos'
+    Caption = 'Cadastro de Pedido'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
     Font.Height = -40
@@ -11337,14 +11338,14 @@ object FormCadPedido: TFormCadPedido
     Stretch = True
   end
   object grp1: TGroupBox
-    Left = 14
-    Top = 223
-    Width = 863
-    Height = 300
+    Left = 17
+    Top = 228
+    Width = 839
+    Height = 273
     TabOrder = 0
     object lbl9: TLabel
-      Left = 660
-      Top = 13
+      Left = 635
+      Top = 9
       Width = 67
       Height = 19
       Caption = 'Pesquisar'
@@ -11356,60 +11357,128 @@ object FormCadPedido: TFormCadPedido
       ParentFont = False
     end
     object dbgrd1: TDBGrid
-      Left = 6
-      Top = 38
-      Width = 848
-      Height = 208
+      Left = 8
+      Top = 39
+      Width = 820
+      Height = 198
+      DataSource = dsPedido
+      ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      Columns = <
+        item
+          Alignment = taRightJustify
+          Expanded = False
+          FieldName = 'codigo'
+          Title.Caption = 'C'#243'digo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'referencia'
+          Title.Caption = 'Refer'#234'ncia'
+          Width = 95
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'nro_pedido'
+          Title.Caption = 'N '#186' Pedido'
+          Width = 142
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'data_emissao'
+          Title.Caption = 'Data Emiss'#227'o'
+          Width = 127
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'codigo_cliente'
+          Title.Caption = 'Codigo  Cliente'
+          Width = 139
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'tipo_operacao'
+          Title.Caption = 'Tipo Operacao'
+          Width = 120
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'total_pedido'
+          Title.Caption = 'Total_Pedido'
+          Width = 109
+          Visible = True
+        end>
     end
     object btnCancelar: TButton
-      Left = 782
-      Top = 253
+      Left = 332
+      Top = 243
       Width = 75
       Height = 25
       Caption = '&Cancelar'
+      Enabled = False
       TabOrder = 1
+      OnClick = btnCancelarClick
     end
     object btnSalvar: TButton
-      Left = 701
-      Top = 253
+      Left = 251
+      Top = 243
       Width = 75
       Height = 25
       Caption = '&Salvar'
+      Enabled = False
       TabOrder = 2
+      OnClick = btnSalvarClick
     end
     object btnExcluir: TButton
-      Left = 620
-      Top = 253
+      Left = 170
+      Top = 243
       Width = 75
       Height = 25
       Caption = '&Excluir'
       TabOrder = 3
+      OnClick = btnExcluirClick
     end
     object btnAlterar: TButton
-      Left = 539
-      Top = 253
+      Left = 89
+      Top = 243
       Width = 75
       Height = 25
       Caption = '&Alterar'
       TabOrder = 4
+      OnClick = btnAlterarClick
     end
     object btnNovo: TButton
-      Left = 458
-      Top = 253
+      Left = 8
+      Top = 243
       Width = 75
       Height = 25
       Caption = '&Novo'
       TabOrder = 5
+      OnClick = btnNovoClick
+    end
+    object btnFechar: TButton
+      Left = 753
+      Top = 243
+      Width = 75
+      Height = 25
+      Caption = '&Fechar'
+      TabOrder = 6
+      OnClick = btnFecharClick
     end
   end
   object SearchBox1: TSearchBox
-    Left = 747
+    Left = 724
     Top = 235
     Width = 121
     Height = 21
@@ -11417,9 +11486,9 @@ object FormCadPedido: TFormCadPedido
     TextHint = 'Pesquisar Pedidos'
   end
   object grp2: TGroupBox
-    Left = 11
-    Top = 95
-    Width = 858
+    Left = 17
+    Top = 100
+    Width = 846
     Height = 122
     Caption = 'Pedidos'
     TabOrder = 2
@@ -11463,8 +11532,8 @@ object FormCadPedido: TFormCadPedido
       ParentFont = False
     end
     object lbl8: TLabel
-      Left = 589
-      Top = 86
+      Left = 605
+      Top = 21
       Width = 95
       Height = 19
       Caption = 'Total Pedido:'
@@ -11514,68 +11583,82 @@ object FormCadPedido: TFormCadPedido
       Font.Style = []
       ParentFont = False
     end
-    object edtCodProduto: TEdit
-      Left = 102
+    object dbedtCodigo: TDBEdit
+      Left = 112
       Top = 21
       Width = 121
       Height = 21
+      DataField = 'codigo'
+      DataSource = dsPedido
       Enabled = False
       TabOrder = 0
-      TextHint = '0'
     end
-    object edt2: TEdit
-      Left = 102
+    object dbedtReferencia: TDBEdit
+      Left = 112
       Top = 55
       Width = 121
       Height = 21
+      DataField = 'referencia'
+      DataSource = dsPedido
       Enabled = False
       TabOrder = 1
-      TextHint = '0'
     end
-    object edt3: TEdit
-      Left = 438
+    object dbedtNumeroPedido: TDBEdit
+      Left = 112
+      Top = 92
+      Width = 121
+      Height = 21
+      DataField = 'nro_pedido'
+      DataSource = dsPedido
+      Enabled = False
+      TabOrder = 2
+    end
+    object dbedtDataEmissao: TDBEdit
+      Left = 440
       Top = 21
       Width = 121
       Height = 21
-      Enabled = False
-      TabOrder = 2
-      TextHint = '0'
-    end
-    object edt6: TEdit
-      Left = 697
-      Top = 88
-      Width = 121
-      Height = 21
+      DataField = 'data_emissao'
+      DataSource = dsPedido
       Enabled = False
       TabOrder = 3
-      TextHint = '0'
     end
-    object edt4: TEdit
-      Left = 438
+    object dbedtCodigoCliente: TDBEdit
+      Left = 440
       Top = 55
       Width = 121
       Height = 21
+      DataField = 'codigo_cliente'
+      DataSource = dsPedido
       Enabled = False
       TabOrder = 4
-      TextHint = '0'
     end
-    object edt1: TEdit
-      Left = 102
-      Top = 88
+    object dbedtTotalPedido: TDBEdit
+      Left = 707
+      Top = 21
       Width = 121
       Height = 21
+      DataField = 'total_pedido'
+      DataSource = dsPedido
       Enabled = False
       TabOrder = 5
-      TextHint = '0'
     end
-    object edt5: TEdit
-      Left = 438
+    object dbcbbtipo_operacao: TDBComboBox
+      Left = 440
       Top = 88
       Width = 121
       Height = 21
+      DataField = 'tipo_operacao'
+      DataSource = dsPedido
       Enabled = False
+      Items.Strings = (
+        'ENTRADA'
+        'SAIDA')
       TabOrder = 6
-      TextHint = '0'
     end
+  end
+  object dsPedido: TDataSource
+    Left = 14
+    Top = 223
   end
 end

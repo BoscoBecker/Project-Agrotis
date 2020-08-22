@@ -11344,11 +11344,11 @@ object FormCadProduto: TFormCadProduto
     Height = 258
     TabOrder = 0
     object lbl9: TLabel
-      Left = 647
+      Left = 642
       Top = 14
-      Width = 67
+      Width = 73
       Height = 19
-      Caption = 'Pesquisar'
+      Caption = 'Pesquisar:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -11362,7 +11362,7 @@ object FormCadProduto: TFormCadProduto
       Width = 836
       Height = 176
       DataSource = dsProduto
-      Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleHotTrack]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgCancelOnExit, dgTitleHotTrack]
       ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
@@ -11386,25 +11386,27 @@ object FormCadProduto: TFormCadProduto
         end>
     end
     object btnCancelar: TButton
-      Left = 332
+      Left = 327
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Cancelar'
+      Enabled = False
       TabOrder = 1
       OnClick = btnCancelarClick
     end
     object btnSalvar: TButton
-      Left = 251
+      Left = 246
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Salvar'
+      Enabled = False
       TabOrder = 2
       OnClick = btnSalvarClick
     end
     object btnExcluir: TButton
-      Left = 170
+      Left = 165
       Top = 221
       Width = 75
       Height = 25
@@ -11413,7 +11415,7 @@ object FormCadProduto: TFormCadProduto
       OnClick = btnExcluirClick
     end
     object btnAlterar: TButton
-      Left = 89
+      Left = 84
       Top = 221
       Width = 75
       Height = 25
@@ -11422,7 +11424,7 @@ object FormCadProduto: TFormCadProduto
       OnClick = btnAlterarClick
     end
     object btnNovo: TButton
-      Left = 8
+      Left = 3
       Top = 221
       Width = 75
       Height = 25
@@ -11431,7 +11433,7 @@ object FormCadProduto: TFormCadProduto
       OnClick = btnNovoClick
     end
     object btnFechar: TButton
-      Left = 769
+      Left = 766
       Top = 221
       Width = 75
       Height = 25
@@ -11441,7 +11443,7 @@ object FormCadProduto: TFormCadProduto
     end
   end
   object PesquisaProduto: TSearchBox
-    Left = 734
+    Left = 731
     Top = 254
     Width = 124
     Height = 21

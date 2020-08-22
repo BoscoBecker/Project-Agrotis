@@ -22,12 +22,14 @@ type
     Parcelapedido1: TMenuItem;
     CadastroPedido1: TMenuItem;
     CadastroProduto1: TMenuItem;
+    img1: TImage;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CadastroPedido1Click(Sender: TObject);
     procedure CadastroProduto1Click(Sender: TObject);
     procedure ItemPedido1Click(Sender: TObject);
     procedure Parcelapedido1Click(Sender: TObject);
+    procedure Sobre1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,7 +44,7 @@ implementation
 {$R *.dfm}
 
 uses frmAcesso, frmCadProduto, frmCadPedido,frmCadItemPedido,
-  frmCadParcelaPedido;
+  frmCadParcelaPedido, UdmConexao;
 
 procedure TFormPrincipal.CadastroPedido1Click(Sender: TObject);
 begin
@@ -76,6 +78,11 @@ procedure TFormPrincipal.Parcelapedido1Click(Sender: TObject);
 begin
   FormCadParcelaPedido := TFormCadParcelaPedido.Create(Self);
   FormCadParcelaPedido.ShowModal;
+end;
+
+procedure TFormPrincipal.Sobre1Click(Sender: TObject);
+begin
+  application.MessageBox(PChar(dmConexao.getVersionMSSQLSERVER),'Sobre o SQL SERVER', MB_ICONINFORMATION+MB_OK);
 end;
 
 end.

@@ -57,12 +57,23 @@ uses UdmCadProduto;
 
 procedure TFormCadProduto.btnAlterarClick(Sender: TObject);
 begin
+  btnAlterar.Enabled := False;
   btnExcluir.Enabled := False;
-
+  btnNovo.Enabled := False; 
+  
   dbedtcodigo_produto.Enabled := True;
   dbmmodescricao.Enabled := True;
+
   btnSalvar.Enabled := True;
   btnCancelar.Enabled := True;
+
+  try
+    dmCadProduto.FDQueryProduto.Edit;
+  except on E: Exception do
+    Application.MessageBox(
+      pchar('Erro ao Alterar, Messagem de erro: ' + E.Message),
+         'Erro ao Alterar',MB_ICONERROR+MB_OK);
+  end; 
 end;
 
 procedure TFormCadProduto.btnCancelarClick(Sender: TObject);
@@ -74,6 +85,7 @@ begin
 
   btnExcluir.Enabled := True;
   btnAlterar.Enabled := True;
+  btnNovo.Enabled := True;
   
   try
     dmCadProduto.FDQueryProduto.Cancel;
@@ -86,6 +98,7 @@ end;
 
 procedure TFormCadProduto.btnExcluirClick(Sender: TObject);
 begin  
+  //btnExcluir.Enabled := False;
   try
     dmCadProduto.FDQueryProduto.Delete;
   except on E: Exception do
@@ -110,6 +123,15 @@ end;
 
 procedure TFormCadProduto.btnNovoClick(Sender: TObject);
 begin
+  btnNovo.Enabled:= False;
+  try
+    dmCadProduto.FDQueryProduto.Append;
+  except on E: Exception do
+    Application.MessageBox(
+      pchar('Erro ao criar um novo registro!, Messagem de erro:' + E.Message),        
+       'Erro ao criar um novo registro!',MB_ICONERROR+MB_OK);                 
+  end;
+  
   btnExcluir.Enabled := False;
   btnAlterar.Enabled := False;
 
@@ -118,18 +140,19 @@ begin
 
   dbmmodescricao.Enabled := True;
   dbmmodescricao.Lines.Text := '';
+  
   btnSalvar.Enabled := True;
   btnCancelar.Enabled := True;    
 end;
 
 procedure TFormCadProduto.btnSalvarClick(Sender: TObject);
 begin
-  if string.Equals(dbedtcodigo_produto.Text, EmptyStr) or
-     string.Equals(dbmmodescricao.Lines.Text, EmptyStr)
+  if string.Equals(Trim(dbedtcodigo_produto.Text), EmptyStr) or
+     string.Equals(Trim(dbmmodescricao.Lines.Text), EmptyStr)
   then
   begin
-    Application.MessageBox('Os Campos não podem estar vazios',
-      'Campos vazios',MB_ICONERROR+MB_OK);
+    Application.MessageBox('Os Campos não podem estar vazios~',
+      'Campos vazios~',MB_ICONERROR+MB_OK);
     Exit;
   end;
    
@@ -142,19 +165,20 @@ begin
        'Erro ao Salvar',MB_ICONERROR+MB_OK);                 
   end;
 
-  dbedtcodigo_produto.Enabled := True;
-  dbmmodescricao.Enabled := True;
+
   btnExcluir.Enabled := True;
   btnAlterar.Enabled := True;
+  btnNovo.Enabled := True;
 
   dbedtcodigo_produto.Enabled := False;
   dbmmodescricao.Enabled := False;
+
   btnCancelar.Enabled := False;
   btnSalvar.Enabled := False;
 end;
 
 procedure TFormCadProduto.FormCreate(Sender: TObject);
-begin
+begin  
   dmCadProduto.inicializaConsultaProduto;
   dsProduto.DataSet := dmCadProduto.FDQueryProduto;
 
