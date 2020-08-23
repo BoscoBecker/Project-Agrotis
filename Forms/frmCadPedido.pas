@@ -61,7 +61,7 @@ implementation
 
 {$R *.dfm}
 
-uses UdmCadPedido;
+uses UdmCadPedido, UdmCadProduto;
 
 procedure TFormCadPedido.btnAlterarClick(Sender: TObject);
 begin
@@ -214,6 +214,7 @@ end;
 
 procedure TFormCadPedido.FormCreate(Sender: TObject);
 begin
+
   dmCadPedido.inicializaConsultaPedido;
   dsPedido.DataSet := dmCadPedido.FDQueryPedido;
 

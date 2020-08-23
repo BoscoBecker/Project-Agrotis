@@ -28,6 +28,7 @@ type
     lbl3: TLabel;
     edtCodProduto: TEdit;
     mmoDescProduto: TMemo;
+    btn1: TButton;
   private
     { Private declarations }
   public

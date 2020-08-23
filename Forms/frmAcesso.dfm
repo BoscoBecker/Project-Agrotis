@@ -11473,8 +11473,24 @@ object FormAcesso: TFormAcesso
     ShowHint = True
     OnClick = img2Click
   end
+  object lbl1: TLabel
+    Left = 8
+    Top = 264
+    Width = 432
+    Height = 25
+    Caption = 'Sistemas inteligentes para o Agroneg'#243'cio'
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    Font.Quality = fqClearTypeNatural
+    ParentColor = False
+    ParentFont = False
+  end
   object btn2: TButton
-    Left = 264
+    Left = 495
     Top = 246
     Width = 113
     Height = 42
@@ -11495,7 +11511,7 @@ object FormAcesso: TFormAcesso
     OnClick = btn2Click
   end
   object actvtyndctr1: TActivityIndicator
-    Left = 8
+    Left = 446
     Top = 256
     Animate = True
     IndicatorColor = aicWhite

@@ -1,9 +1,10 @@
 object FormCadParcelaPedido: TFormCadParcelaPedido
   Left = 0
   Top = 0
+  BorderStyle = bsSingle
   Caption = 'Cadastro e pesquisa de parcela de pedidos'
-  ClientHeight = 506
-  ClientWidth = 875
+  ClientHeight = 516
+  ClientWidth = 885
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,23 +12,22 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
   object shp2: TShape
     Left = 0
     Top = 0
-    Width = 875
-    Height = 506
+    Width = 885
+    Height = 516
     Align = alClient
     ExplicitLeft = -10
     ExplicitTop = -10
-    ExplicitWidth = 885
-    ExplicitHeight = 516
   end
   object img2: TImage
     Left = -10
     Top = 0
-    Width = 885
+    Width = 895
     Height = 89
     Center = True
     IncrementalDisplay = True
@@ -11367,7 +11367,7 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       TitleFont.Style = []
     end
     object btnCancelar: TButton
-      Left = 764
+      Left = 332
       Top = 221
       Width = 75
       Height = 25
@@ -11375,7 +11375,7 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       TabOrder = 1
     end
     object btnSalvar: TButton
-      Left = 683
+      Left = 251
       Top = 221
       Width = 75
       Height = 25
@@ -11383,7 +11383,7 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       TabOrder = 2
     end
     object btnExcluir: TButton
-      Left = 602
+      Left = 170
       Top = 221
       Width = 75
       Height = 25
@@ -11391,7 +11391,7 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       TabOrder = 3
     end
     object btnAlterar: TButton
-      Left = 521
+      Left = 89
       Top = 221
       Width = 75
       Height = 25
@@ -11399,12 +11399,20 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       TabOrder = 4
     end
     object btnNovo: TButton
-      Left = 440
+      Left = 8
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Novo'
       TabOrder = 5
+    end
+    object btn1: TButton
+      Left = 769
+      Top = 221
+      Width = 75
+      Height = 25
+      Caption = '&Fechar'
+      TabOrder = 6
     end
   end
   object SearchBox1: TSearchBox

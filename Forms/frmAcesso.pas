@@ -16,6 +16,7 @@ type
     img2: TImage;
     shp1: TShape;
     actvtyndctr1: TActivityIndicator;
+    lbl1: TLabel;
     procedure btn2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure img2Click(Sender: TObject);

@@ -11362,6 +11362,7 @@ object FormCadItemPedido: TFormCadItemPedido
       Top = 56
       Width = 834
       Height = 176
+      DataSource = dsItemPedido
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -11411,7 +11412,9 @@ object FormCadItemPedido: TFormCadItemPedido
       Width = 75
       Height = 25
       Caption = '&Cancelar'
+      Enabled = False
       TabOrder = 1
+      OnClick = btnCancelarClick
     end
     object btnSalvar: TButton
       Left = 252
@@ -11419,7 +11422,9 @@ object FormCadItemPedido: TFormCadItemPedido
       Width = 75
       Height = 25
       Caption = '&Salvar'
+      Enabled = False
       TabOrder = 2
+      OnClick = btnSalvarClick
     end
     object btnExcluir: TButton
       Left = 171
@@ -11428,6 +11433,7 @@ object FormCadItemPedido: TFormCadItemPedido
       Height = 25
       Caption = '&Excluir'
       TabOrder = 3
+      OnClick = btnExcluirClick
     end
     object btnAlterar: TButton
       Left = 90
@@ -11436,6 +11442,7 @@ object FormCadItemPedido: TFormCadItemPedido
       Height = 25
       Caption = '&Alterar'
       TabOrder = 4
+      OnClick = btnAlterarClick
     end
     object btnNovo: TButton
       Left = 9
@@ -11465,8 +11472,8 @@ object FormCadItemPedido: TFormCadItemPedido
     end
   end
   object grp2: TGroupBox
-    Left = 14
-    Top = 104
+    Left = 20
+    Top = 106
     Width = 854
     Height = 113
     Caption = 'Item Pedido '
@@ -11536,24 +11543,6 @@ object FormCadItemPedido: TFormCadItemPedido
       Font.Style = []
       ParentFont = False
     end
-    object dbcbbcodigo_pedido: TDBComboBox
-      Left = 156
-      Top = 50
-      Width = 145
-      Height = 21
-      DataField = 'codigo_pedido'
-      DataSource = dsItemPedido
-      TabOrder = 0
-    end
-    object dbcbbcodigo_produto: TDBComboBox
-      Left = 156
-      Top = 23
-      Width = 145
-      Height = 21
-      DataField = 'codigo_produto'
-      DataSource = dsItemPedido
-      TabOrder = 1
-    end
     object dbedtqtd: TDBEdit
       Left = 475
       Top = 23
@@ -11561,7 +11550,8 @@ object FormCadItemPedido: TFormCadItemPedido
       Height = 21
       DataField = 'qtd'
       DataSource = dsItemPedido
-      TabOrder = 2
+      Enabled = False
+      TabOrder = 0
     end
     object dbedtvalor_unit: TDBEdit
       Left = 475
@@ -11570,7 +11560,8 @@ object FormCadItemPedido: TFormCadItemPedido
       Height = 21
       DataField = 'valor_unit'
       DataSource = dsItemPedido
-      TabOrder = 3
+      Enabled = False
+      TabOrder = 1
     end
     object dbedttotal_item: TDBEdit
       Left = 718
@@ -11579,11 +11570,41 @@ object FormCadItemPedido: TFormCadItemPedido
       Height = 21
       DataField = 'total_item'
       DataSource = dsItemPedido
+      Enabled = False
+      TabOrder = 2
+    end
+    object dbcbbcodigo: TDBComboBox
+      Left = 156
+      Top = 50
+      Width = 145
+      Height = 21
+      DataField = 'codigo_pedido'
+      DataSource = dsItemPedido
+      Enabled = False
+      TabOrder = 3
+    end
+    object dblkcbbcodigo_produto: TDBLookupComboBox
+      Left = 156
+      Top = 23
+      Width = 145
+      Height = 21
+      DataField = 'codigo_produto'
+      DataSource = dsItemPedido
+      Enabled = False
+      KeyField = 'codigo_produto'
+      ListField = 'descricao'
+      ListSource = dsProduto
       TabOrder = 4
     end
   end
   object dsItemPedido: TDataSource
-    Left = 62
-    Top = 296
+    DataSet = dmCadPedidoItem.FDQueryItemPedido
+    Left = 54
+    Top = 232
+  end
+  object dsProduto: TDataSource
+    DataSet = dmCadPedidoItem.FDQueryItemPedidoProduto
+    Left = 126
+    Top = 233
   end
 end

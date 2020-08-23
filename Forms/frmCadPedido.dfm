@@ -11357,11 +11357,12 @@ object FormCadPedido: TFormCadPedido
       ParentFont = False
     end
     object dbgrd1: TDBGrid
-      Left = 8
-      Top = 39
+      Left = 11
+      Top = 38
       Width = 820
       Height = 198
       DataSource = dsPedido
+      Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
@@ -11388,7 +11389,7 @@ object FormCadPedido: TFormCadPedido
           Expanded = False
           FieldName = 'nro_pedido'
           Title.Caption = 'N '#186' Pedido'
-          Width = 142
+          Width = 118
           Visible = True
         end
         item
@@ -11658,6 +11659,7 @@ object FormCadPedido: TFormCadPedido
     end
   end
   object dsPedido: TDataSource
+    DataSet = dmCadPedido.FDQueryPedido
     Left = 14
     Top = 223
   end
