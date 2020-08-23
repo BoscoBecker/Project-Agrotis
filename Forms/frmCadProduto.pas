@@ -10,27 +10,27 @@ uses
 
 type
   TFormCadProduto = class(TForm)
-    lbl1: TLabel;
-    shp2: TShape;
-    img2: TImage;
-    img1: TImage;
-    shp1: TShape;
-    grp1: TGroupBox;
-    dbgrd1: TDBGrid;
+    lblTitulo: TLabel;
+    shpFundo: TShape;
+    imgFundo: TImage;
+    imgLogo: TImage;
+    shpLayout: TShape;
+    grpGrid: TGroupBox;
+    dbgrdGrid: TDBGrid;
     btnCancelar: TButton;
     btnSalvar: TButton;
     btnExcluir: TButton;
     btnAlterar: TButton;
     btnNovo: TButton;
-    PesquisaProduto: TSearchBox;
-    grp2: TGroupBox;
-    lbl2: TLabel;
-    lbl3: TLabel;
-    lbl9: TLabel;
+    grpCampos: TGroupBox;
+    lblProduto: TLabel;
+    lblDescricao: TLabel;
+    lblPesquisa: TLabel;
     btnFechar: TButton;
     dsProduto: TDataSource;
     dbedtcodigo_produto: TDBEdit;
     dbmmodescricao: TDBMemo;
+    edtPesquisa: TSearchBox;
     procedure FormCreate(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
@@ -38,7 +38,7 @@ type
     procedure btnExcluirClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
-    procedure PesquisaProdutoChange(Sender: TObject);
+    procedure edtPesquisaChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -97,8 +97,7 @@ begin
 end;
 
 procedure TFormCadProduto.btnExcluirClick(Sender: TObject);
-begin  
-  //btnExcluir.Enabled := False;
+begin
   try
     dmCadProduto.FDQueryProduto.Delete;
   except on E: Exception do
@@ -155,7 +154,6 @@ begin
       'Campos vazios~',MB_ICONERROR+MB_OK);
     Exit;
   end;
-   
 
   try
     dmCadProduto.FDQueryProduto.Post;
@@ -164,7 +162,6 @@ begin
       pchar('Erro ao Salvar, Messagem de erro:' + E.Message),        
        'Erro ao Salvar',MB_ICONERROR+MB_OK);                 
   end;
-
 
   btnExcluir.Enabled := True;
   btnAlterar.Enabled := True;
@@ -192,10 +189,10 @@ begin
 
   btnSalvar.Enabled := False;
 end;
-procedure TFormCadProduto.PesquisaProdutoChange(Sender: TObject);
+procedure TFormCadProduto.edtPesquisaChange(Sender: TObject);
 begin
   try
-  dmCadProduto.pesquisaProduto(PesquisaProduto.text);
+    dmCadProduto.pesquisaProduto(edtPesquisa.text);
   except on E: Exception do
     Application.MessageBox(
       pchar('Erro ao Pesquisa, Messagem de erro:' + E.Message),        

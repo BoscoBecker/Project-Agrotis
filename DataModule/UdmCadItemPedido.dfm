@@ -1,7 +1,7 @@
 object dmCadPedidoItem: TdmCadPedidoItem
   OldCreateOrder = False
-  Height = 221
-  Width = 368
+  Height = 286
+  Width = 228
   object FDQueryItemPedido: TFDQuery
     Left = 104
     Top = 136
@@ -17,36 +17,17 @@ object dmCadPedidoItem: TdmCadPedidoItem
   end
   object FDCommandAtualizaTotalPedido: TFDCommand
     CommandText.Strings = (
-      'UPDATE PEDIDO'
-      'SET total_pedido = (total_pedido + :VALOR_PEDIDO)'
-      'WHERE codigo  =:CODIGO')
+      'UPDATE PEDIDO '
+      
+        'SET total_pedido = ((SELECT ISNULL(SUM(TOTAL_ITEM),0) FROM PEDID' +
+        'O_ITEM WHERE CODIGO_PEDIDO =:CODIGO_PEDIDO))'
+      'WHERE codigo =:CODIGO_PEDIDO')
     ParamData = <
       item
-        Name = 'VALOR_PEDIDO'
-        ParamType = ptInput
-      end
-      item
-        Name = 'CODIGO'
+        Name = 'CODIGO_PEDIDO'
         ParamType = ptInput
       end>
-    Left = 240
-    Top = 56
-  end
-  object FDCommandDeletaTotalPedido: TFDCommand
-    CommandText.Strings = (
-      'UPDATE PEDIDO'
-      'SET total_pedido = (total_pedido - :VALOR_PEDIDO)'
-      'WHERE codigo  =:CODIGO')
-    ParamData = <
-      item
-        Name = 'VALOR_PEDIDO'
-        ParamType = ptInput
-      end
-      item
-        Name = 'CODIGO'
-        ParamType = ptInput
-      end>
-    Left = 240
-    Top = 112
+    Left = 104
+    Top = 192
   end
 end

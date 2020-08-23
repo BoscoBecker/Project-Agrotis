@@ -1,7 +1,6 @@
-object FormPrincipal: TFormPrincipal
+object formPrincipal: TformPrincipal
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Agrotis - Sistemas para o Agroneg'#243'cio '
   ClientHeight = 569
@@ -12,15 +11,16 @@ object FormPrincipal: TFormPrincipal
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  Menu = mm1
+  Menu = mmMenu
   OldCreateOrder = False
   Position = poScreenCenter
   WindowState = wsMaximized
   OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object img2: TImage
+  object imgFundo: TImage
     Left = 0
     Top = 0
     Width = 1321
@@ -10709,7 +10709,7 @@ object FormPrincipal: TFormPrincipal
     ExplicitTop = 8
     ExplicitWidth = 1228
   end
-  object img1: TImage
+  object imgLogo: TImage
     Left = 256
     Top = 208
     Width = 937
@@ -11318,14 +11318,25 @@ object FormPrincipal: TFormPrincipal
       0FCAF884F23B4279040000000049454E44AE426082}
     Proportional = True
   end
-  object stat1: TStatusBar
+  object statusRodape: TStatusBar
     Left = 0
     Top = 550
     Width = 1321
     Height = 19
-    Panels = <>
+    Panels = <
+      item
+        Width = 500
+      end
+      item
+        Alignment = taCenter
+        Width = 400
+      end
+      item
+        Alignment = taRightJustify
+        Width = 100
+      end>
   end
-  object mm1: TMainMenu
+  object mmMenu: TMainMenu
     Left = 24
     Top = 8
     object Cadastros1: TMenuItem
@@ -11354,7 +11365,11 @@ object FormPrincipal: TFormPrincipal
       end
     end
     object Relatrios1: TMenuItem
-      Caption = 'Relat'#243'rios'
+      Caption = 'Gr'#225'fico'
+      object Pedidoem1: TMenuItem
+        Caption = 'Pedido em percetuais'
+        OnClick = Pedidoem1Click
+      end
     end
     object Sobre1: TMenuItem
       Caption = 'Sobre'
@@ -11363,5 +11378,10 @@ object FormPrincipal: TFormPrincipal
     object Ajuda1: TMenuItem
       Caption = 'Ajuda'
     end
+  end
+  object tmrStatus: TTimer
+    OnTimer = tmrStatusTimer
+    Left = 64
+    Top = 8
   end
 end

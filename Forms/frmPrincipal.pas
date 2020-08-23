@@ -8,21 +8,23 @@ uses
   Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.ComCtrls;
 
 type
-  TFormPrincipal = class(TForm)
-    mm1: TMainMenu;
+  TformPrincipal = class(TForm)
+    mmMenu: TMainMenu;
     Cadastros1: TMenuItem;
     Sobre1: TMenuItem;
     Ajuda1: TMenuItem;
     Relatrios1: TMenuItem;
-    img2: TImage;
-    stat1: TStatusBar;
+    imgFundo: TImage;
+    statusRodape: TStatusBar;
     Produto1: TMenuItem;
     Pedido1: TMenuItem;
     ItemPedido1: TMenuItem;
     Parcelapedido1: TMenuItem;
     CadastroPedido1: TMenuItem;
     CadastroProduto1: TMenuItem;
-    img1: TImage;
+    imgLogo: TImage;
+    tmrStatus: TTimer;
+    Pedidoem1: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CadastroPedido1Click(Sender: TObject);
@@ -30,6 +32,9 @@ type
     procedure ItemPedido1Click(Sender: TObject);
     procedure Parcelapedido1Click(Sender: TObject);
     procedure Sobre1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure tmrStatusTimer(Sender: TObject);
+    procedure Pedidoem1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,52 +42,74 @@ type
   end;
 
 var
-  FormPrincipal: TFormPrincipal;
+  formPrincipal: TformPrincipal;
 
 implementation
 
 {$R *.dfm}
 
 uses frmAcesso, frmCadProduto, frmCadPedido,frmCadItemPedido,
-  frmCadParcelaPedido, UdmConexao;
+  frmCadParcelaPedido, UdmConexao, frmGrafico;
 
-procedure TFormPrincipal.CadastroPedido1Click(Sender: TObject);
+procedure TformPrincipal.CadastroPedido1Click(Sender: TObject);
 begin
   FormCadPedido := TFormCadPedido.Create(Self);
   FormCadPedido.ShowModal;
 end;
 
-procedure TFormPrincipal.CadastroProduto1Click(Sender: TObject);
+procedure TformPrincipal.CadastroProduto1Click(Sender: TObject);
 begin
   FormCadProduto := TFormCadProduto.Create(self);
   FormCadProduto.ShowModal;
 end;
 
-procedure TFormPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TformPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Application.Terminate
+  if (Application.MessageBox('Deseja encerrar a aplicação?',
+                              'Informação',MB_ICONQUESTION+MB_YESNO) = ID_YES)
+  then
+    Application.Terminate
+  else
+    Action := caNone;
 end;
 
-procedure TFormPrincipal.FormShow(Sender: TObject);
+procedure TformPrincipal.FormCreate(Sender: TObject);
+begin
+ statusRodape.Panels[0].Text := 'Sistemas inteligentes para o agronegócio';
+ statusRodape.Panels[2].Text := 'Olá, seja Bem Vindo';
+end;
+
+procedure TformPrincipal.FormShow(Sender: TObject);
 begin
   FormAcesso.Visible:= false;
 end;
 
-procedure TFormPrincipal.ItemPedido1Click(Sender: TObject);
+procedure TformPrincipal.ItemPedido1Click(Sender: TObject);
 begin
   FormCadItemPedido := TFormCadItemPedido.Create(self);
   FormCadItemPedido.ShowModal;
 end;
 
-procedure TFormPrincipal.Parcelapedido1Click(Sender: TObject);
+procedure TformPrincipal.Parcelapedido1Click(Sender: TObject);
 begin
   FormCadParcelaPedido := TFormCadParcelaPedido.Create(Self);
   FormCadParcelaPedido.ShowModal;
 end;
 
-procedure TFormPrincipal.Sobre1Click(Sender: TObject);
+procedure TformPrincipal.Pedidoem1Click(Sender: TObject);
 begin
-  application.MessageBox(PChar(dmConexao.getVersionMSSQLSERVER),'Sobre o SQL SERVER', MB_ICONINFORMATION+MB_OK);
+  formGraficoPedido := TformGraficoPedido.Create(self);
+  formGraficoPedido.ShowModal;
+end;
+
+procedure TformPrincipal.Sobre1Click(Sender: TObject);
+begin
+  application.MessageBox(PChar(dmConexao.getVersionMSSQLSERVER),'Sobre o SQL SERVER.', MB_ICONINFORMATION+MB_OK);
+end;
+
+procedure TformPrincipal.tmrStatusTimer(Sender: TObject);
+begin
+ statusRodape.Panels[1].Text := FormatDateTime('DD/MM/YYY - hh:mm:ss', now);
 end;
 
 end.

@@ -1,10 +1,10 @@
-object formCadPedido: TformCadPedido
+object formGraficoPedido: TformGraficoPedido
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Cadastro e pesquisa de pedidos'
-  ClientHeight = 516
+  Caption = 'Visualizador de gr'#225'fico de Pedido'
+  ClientHeight = 513
   ClientWidth = 885
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,19 +17,16 @@ object formCadPedido: TformCadPedido
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object shpFundo: TShape
+  object shp1: TShape
     Left = 0
-    Top = 0
-    Width = 885
-    Height = 516
-    Align = alClient
-    ExplicitLeft = -10
-    ExplicitTop = -10
+    Top = 90
+    Width = 883
+    Height = 423
   end
   object imgFundo: TImage
     Left = -10
     Top = 0
-    Width = 895
+    Width = 893
     Height = 89
     Center = True
     IncrementalDisplay = True
@@ -10710,27 +10707,8 @@ object formCadPedido: TformCadPedido
       4C600FABFFD9}
     Stretch = True
   end
-  object lblTitulo: TLabel
-    Left = 8
-    Top = 8
-    Width = 342
-    Height = 48
-    Caption = 'Cadastro de Pedido'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -40
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
-  object shpLayout: TShape
-    Left = 7
-    Top = 93
-    Width = 868
-    Height = 417
-  end
   object imgLogo: TImage
-    Left = 672
+    Left = 670
     Top = 15
     Width = 205
     Height = 41
@@ -11337,348 +11315,216 @@ object formCadPedido: TformCadPedido
       0FCAF884F23B4279040000000049454E44AE426082}
     Stretch = True
   end
-  object grpGrid: TGroupBox
-    Left = 17
-    Top = 228
-    Width = 846
-    Height = 274
+  object lblTitulo: TLabel
+    Left = 8
+    Top = 8
+    Width = 324
+    Height = 48
+    Caption = 'Gr'#225'fico de Pedido '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -40
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object grp1: TGroupBox
+    Left = 8
+    Top = 104
+    Width = 867
+    Height = 401
     TabOrder = 0
-    object lblPesquisar: TLabel
-      Left = 635
-      Top = 9
-      Width = 67
-      Height = 19
-      Caption = 'Pesquisar'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
-    object dbgrdPedido: TDBGrid
-      Left = 11
-      Top = 38
-      Width = 820
-      Height = 198
-      DataSource = dsPedido
-      Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-      ReadOnly = True
-      TabOrder = 0
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'Tahoma'
-      TitleFont.Style = []
-      Columns = <
-        item
-          Alignment = taRightJustify
-          Expanded = False
-          FieldName = 'codigo'
-          Title.Caption = 'C'#243'digo Pedido'
-          Width = 89
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'codigo_cliente'
-          Title.Caption = 'Codigo  Cliente'
-          Width = 139
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'nro_pedido'
-          Title.Caption = 'N '#186' Pedido'
-          Width = 118
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'referencia'
-          Title.Caption = 'Refer'#234'ncia'
-          Width = 79
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'data_emissao'
-          Title.Caption = 'Data Emiss'#227'o'
-          Width = 127
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'tipo_operacao'
-          Title.Caption = 'Tipo Operacao'
-          Width = 75
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'total_pedido'
-          Title.Caption = 'Total_Pedido'
-          Width = 109
-          Visible = True
-        end>
-    end
-    object btnCancelar: TButton
-      Left = 332
-      Top = 240
-      Width = 75
-      Height = 25
-      Caption = '&Cancelar'
-      Enabled = False
-      TabOrder = 6
-      OnClick = btnCancelarClick
-    end
-    object btnSalvar: TButton
-      Left = 251
-      Top = 240
-      Width = 75
-      Height = 25
-      Caption = '&Salvar'
-      Enabled = False
-      TabOrder = 5
-      OnClick = btnSalvarClick
-    end
-    object btnExcluir: TButton
-      Left = 170
-      Top = 240
-      Width = 75
-      Height = 25
-      Caption = '&Excluir'
-      TabOrder = 4
-      OnClick = btnExcluirClick
-    end
-    object btnAlterar: TButton
-      Left = 89
-      Top = 240
-      Width = 75
-      Height = 25
-      Caption = '&Alterar'
-      TabOrder = 3
-      OnClick = btnAlterarClick
-    end
-    object btnNovo: TButton
-      Left = 8
-      Top = 240
-      Width = 75
-      Height = 25
-      Caption = '&Novo'
-      TabOrder = 2
-      OnClick = btnNovoClick
-    end
     object btnFechar: TButton
-      Left = 756
-      Top = 239
+      Left = 782
+      Top = 360
       Width = 75
       Height = 25
       Caption = '&Fechar'
-      TabOrder = 7
+      TabOrder = 0
       OnClick = btnFecharClick
     end
-    object edtPesquisa: TSearchBox
-      Left = 708
-      Top = 11
-      Width = 121
-      Height = 21
+    object dbchtGraficoPedido: TDBChart
+      Left = 14
+      Top = 16
+      Width = 827
+      Height = 338
+      LeftWall.Picture.Data = {
+        07544269746D6170360C0000424D360C00000000000036000000280000002000
+        0000200000000100180000000000000C00000000000000000000000000000000
+        0000D2D2D2CACACABABABAB6B6B6AFAFAFB9B9B9C6C6C6C7C7C7C4C4C4C8C8C8
+        CFCFCFCDCDCDCBCBCBD1D1D1D6D6D6D7D7D7D8D8D8D7D7D7D5D5D5D1D1D1D4D4
+        D4D5D5D5D9D9D9DCDCDCDBDBDBDBDBDBDBDBDBD9D9D9D3D3D3CDCDCDC8C8C8C6
+        C6C6D9D9D9D0D0D0BFBFBFBDBDBDB8B8B8BFBFBFC9C9C9C9C9C9C8C8C8CCCCCC
+        D2D2D2D2D2D2D3D3D3D8D8D8D8D8D8D7D7D7D8D8D8D7D7D7D6D6D6D5D5D5D8D8
+        D8D7D7D7D9D9D9DBDBDBDADADADADADAD9D9D9D7D7D7D1D1D1CBCBCBC5C5C5C3
+        C3C3D7D7D7D3D3D3C5C5C5C1C1C1C5C5C5C5C5C5C9C9C9C7C7C7CACACACECECE
+        D1D1D1CFCFCFD3D3D3D6D6D6D6D6D6D8D8D8D7D7D7D6D6D6D8D8D8DBDBDBDADA
+        DAD8D8D8D8D8D8DBDBDBDBDBDBD8D8D8D6D6D6D4D4D4CECECEC8C8C8C4C4C4C5
+        C5C5D4D4D4CECECEC9C9C9C6C6C6C8C8C8C9C9C9C9C9C9C7C7C7C7C7C7CCCCCC
+        D0D0D0D0D0D0D1D1D1D4D4D4D8D8D8D8D8D8DDDDDDDFDFDFDEDEDEDCDCDCD9D9
+        D9D9D9D9D9D9D9D8D8D8D8D8D8D4D4D4D0D0D0CBCBCBC7C7C7C8C8C8CCCCCCCC
+        CCCCCFCFCFCDCDCDCECECECECECECDCDCDCFCFCFCECECECBCBCBCBCBCBCFCFCF
+        D3D3D3D4D4D4D4D4D4D6D6D6D9D9D9DADADADDDDDDDFDFDFDFDFDFDEDEDEDDDD
+        DDDDDDDDDCDCDCDADADAD9D9D9D4D4D4CECECECACACAC8C8C8CDCDCDD2D2D2D4
+        D4D4CFCFCFD1D1D1D7D7D7D7D7D7D2D2D2D4D4D4D4D4D4D1D1D1CFCFCFD1D1D1
+        D4D4D4D5D5D5D4D4D4D6D6D6D9D9D9DADADADCDCDCDCDCDCDEDEDEDFDFDFDEDE
+        DEDEDEDEDEDEDEDDDDDDDADADAD7D7D7D0D0D0CCCCCCCECECED4D4D4D9D9D9DA
+        DADAD3D3D3D7D7D7D9D9D9D8D8D8D5D5D5D8D8D8D8D8D8D6D6D6D2D2D2D3D3D3
+        D7D7D7D8D8D8D8D8D8D8D8D8DADADADBDBDBDADADADADADADBDBDBDCDCDCDADA
+        DADCDCDCDEDEDEDEDEDEDCDCDCDADADAD3D3D3CECECED1D1D1D7D7D7DBDBDBDD
+        DDDDD8D8D8D8D8D8D5D5D5D4D4D4D4D4D4D8D8D8D9D9D9D7D7D7D3D3D3D5D5D5
+        D9D9D9DBDBDBDCDCDCDCDCDCDDDDDDDCDCDCDBDBDBDADADADADADADADADADADA
+        DADCDCDCDEDEDEDEDEDEDCDCDCD9D9D9D2D2D2CECECED3D3D3D8D8D8DADADADB
+        DBDBDCDCDCD7D7D7D2D2D2D3D3D3D3D3D3D7D7D7D9D9D9D6D6D6D3D3D3D3D3D3
+        D8D8D8DBDBDBDCDCDCDCDCDCDEDEDEDEDEDEDDDDDDDCDCDCDADADAD9D9D9DCDC
+        DCDEDEDEE0E0E0DEDEDEDBDBDBD8D8D8D2D2D2D0D0D0D7D7D7DBDBDBDADADAD5
+        D5D5D7D7D7D4D4D4D2D2D2D3D3D3D5D5D5D5D5D5D5D5D5D5D5D5D5D5D5D5D5D5
+        D8D8D8DADADADBDBDBDEDEDEE1E1E1DFDFDFDDDDDDE0E0E0DEDEDED7D7D7DBDB
+        DBDCDCDCDDDDDDDCDCDCDADADAD5D6D6D1D3D3D2D4D4D7D9D9D8DADAD5D7D7D2
+        D4D4D9D9D9D7D7D7D3D3D3D2D2D2D5D5D5D6D6D6D8D8D8DADADADCDCDCDADADA
+        DCDCDCDEDEDEDEDEDEDFDFDFE0E0E0DDDDDDDADADADCDCDCDBDBDBD5D5D5DADA
+        DAD9D9D9DADADADBDBDBD7D7D7D3D4D4CFD1D1CFD1D1D4D6D6D8DADAD9DBDBD9
+        DBDBD7D7D7D8D8D8D7D7D7D7D7D7DADADADBDBDBDCDCDCDEDEDEDFDFDFE0E0E0
+        E2E2E2E3E3E3E1E1E1DEDEDEDDDDDDDBDBDBD7D7D7D8D8D8D7D7D7D2D2D2D8D8
+        D8D6D6D6D8D8D8DADADAD6D6D6D2D3D3D2D4D4D4D6D6D7D9D9DADCDCDADCDCDA
+        DCDCD6D6D6D8D8D8DDDDDDDFDFDFE1E1E1E0E0E0DFDFDFDEDEDEDDDDDDDFDFDF
+        E0E0E0E2E2E2E2E2E2E0E0E0DEDEDEDADADAD5D5D5D6D6D6D3D3D3CECECED6D6
+        D6D5D5D5D6D6D6D7D7D7D4D4D4D1D2D2D5D7D7DADCDCDBDDDDD9DBDBD7D9D9D8
+        DADAD9D9D9DBDBDBDFDFDFE0E0E0E1E1E1E1E1E1E0E0E0DEDEDEDEDEDEDDDDDD
+        DBDBDBDDDDDDE1E1E1E1E1E1DFDFDFDADADAD6D6D6D5D5D5D0D0D0C9C9C9CFCF
+        CFD2D2D2D1D1D1CFCFCFCFCFCFD0D1D1D6D8D8DCDEDEDCDEDEDADCDCD9DBDBDB
+        DDDDDEDEDEE0E0E0E0E0E0DDDDDDDDDDDDDEDEDEDFDFDFE0E0E0E1E1E1E0E0E0
+        DCDCDCDBDBDBDEDEDEDEDEDEDCDCDCDCDCDCD7D7D7D6D6D6CFCFCFC7C7C7C7C7
+        C7CCCCCCCBCBCBC7C7C7CACACAD1D2D2D8DADADDDFDFDEE0E0DEE0E0DFE1E1DE
+        E0E0E5E5E5E4E4E4DEDEDEDBDBDBDADADADBDBDBDEDEDEE0E0E0E2E2E2E3E3E3
+        DEDEDEDBDBDBDEDEDEDEDEDEDBDBDBDDDDDDDFDFDFDDDDDDD6D6D6D0D0D0C5C5
+        C5C3C3C3C2C2C2C7C7C7D1D1D1D4D6D6D9DBDBDEE0E0DEE0E0DEE0E0DDDFDFDE
+        E0E0E3E3E3E1E1E1DEDEDEDCDCDCDADADADBDBDBDEDEDEE0E0E0E2E2E2E1E1E1
+        DDDDDDDBDBDBDDDDDDDBDBDBD8D8D8DADADADDDDDDDDDDDDDCDCDCDBDBDBCFCF
+        CFCBCBCBCBCBCBD0D0D0D6D6D6D5D7D7D9DBDBDCDEDEDCDEDEDADCDCDADCDCDB
+        DDDDDCDCDCDBDBDBDBDBDBDCDCDCDDDDDDDDDDDDE0E0E0E1E1E1E3E3E3E1E1E1
+        DEDEDEDCDCDCDDDDDDDBDBDBD9D9D9DCDCDCDBDBDBDBDBDBDEDEDEDFDFDFDBDB
+        DBD5D5D5D4D4D4D9D9D9DADADAD8DADADBDDDDDDDFDFDADCDCD8DADAD8DADAD8
+        DADADBDBDBDBDBDBDDDDDDDFDFDFE1E1E1E2E2E2E3E3E3E4E4E4E5E5E5E3E3E3
+        E0E0E0DEDEDEDEDEDEDEDEDEDEDEDEDEDEDEDADADADADADADDDDDDE0E0E0E0E0
+        E0DBDBDBDADADADCDCDCDADADADBDCDCDEE0E0DEE0E0DBDDDDD9DBDBD8DADAD8
+        DADADDDDDDDEDEDEE0E0E0E2E2E2E3E3E3E3E3E3E4E4E4E5E5E5E5E5E5E3E3E3
+        E1E1E1DEDEDEDDDDDDE0E0E0E2E2E2DEDEDEDBDBDBDBDBDBDEDEDEE2E2E2E1E1
+        E1DFDFDFDDDDDDDCDCDCDADADADCDEDEDFE1E1DFE1E1DCDEDEDADCDCD9DBDBDA
+        DCDCDDDDDCDFDFDFE1E1E1E3E3E2E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E3E3E3
+        E0E0E0DDDDDDDCDCDCE0E0E0E4E4E4E2E2E2DDDEDEDCDDDDDFDFDFE1E1E1E1E1
+        E1E1E1E1DEDEDEDBDBDBDADBDBDCDEDEDEE0E0DEE0E0DBDDDDDADCDCDBDDDDDC
+        DEDEDFE0DEE1E2E0E3E4E2E4E5E3E4E4E4E5E5E5E4E4E4E4E4E4E4E4E4E2E2E2
+        DEDEDEDCDCDCDCDCDCDEDEDEDEDEDEDADCDCD9DBDBDDDFDFE1E3E3E0E2E2DEE0
+        E0DDDFDFDCDEDEDBDDDDDADCDCDBDDDDD9DBDBD8DADADADCDCDCDEDEDCDEDEDA
+        DCDCE2E3E1E3E4E2E4E5E3E5E6E4E5E5E5E5E5E5E4E4E4E3E3E3E2E2E2E1E1E1
+        DEDEDEDCDCDCDBDBDBDCDCDCDCDCDCD9DBDBD9DBDBDDDFDFE1E3E3E1E3E3DEE0
+        E0DDDFDFDDDFDFDBDDDDD9DBDBD8DADAD9DBDBD9DBDBD9DBDBDCDEDEDEE0E0DD
+        DFDFE5E6E4E6E7E5E5E6E4E5E6E4E6E6E6E5E5E5E4E4E4E3E3E3E0E0E0DEDEDE
+        DDDDDDDBDBDBD9D9D9D9D9D9D8D8D8D7D9D9D9DBDBDCDEDEDFE1E1DFE1E1DDDF
+        DFDEE0E0DDDFDFDADCDCD7D9D9D6D8D8D9DBDBDADCDCD6D8D8D8DADADDDFDFDE
+        E0E0E7E8E6E7E8E6E6E7E5E6E7E5E6E6E6E4E4E4E5E5E5E4E4E4DEDEDEDCDCDC
+        DBDBDBDADADAD9D9D9D8D8D8D6D7D7D7D9D9DADCDCDCDEDEDDDFDFDEE0E0DDDF
+        DFDDDFDFDCDEDED8DADAD4D6D6D1D3D3D3D5D5D3D5D5CFD1D1CFD1D1D5D7D7DB
+        DDDDE8E9E7E7E8E6E7E8E6E6E7E5E4E4E4E3E3E3E4E4E4E5E5E5DEDEDEDCDCDC
+        DCDCDCDCDCDCDBDBDBDADADAD9DADADADCDCDFE1E1DFE1E1DEE0E0DFE1E1DDDF
+        DFDCDEDED8DADAD5D7D7D2D4D4D0D2D2D1D3D3D1D3D3D1D3D3D1D3D3D3D5D5D8
+        DADAE7E8E6E8E9E7E6E7E5E6E7E5E3E3E3E1E1E1E4E4E4E5E5E5DFDFDFDDDDDD
+        DEDEDEDFDFDFDFDFDFDFDFDFDDDEDEDFE1E1E3E5E5E2E4E4E1E3E3E1E3E3DDDF
+        DFDADCDCD6D8D8D3D5D5D1D3D3D4D6D6D6D8D8D7D9D9DCDEDEDDDFDFDADCDCD5
+        D7D7E6E7E5E7E8E6E7E8E6E5E6E4E1E1E1E1E1E1E1E1E1E1E1E1E2E2E2E0E0E0
+        E0E0E0E1E1E1E3E3E3E4E4E4E3E4E4E2E4E4E3E5E5E3E5E5E2E4E4E1E3E3DDDF
+        DFDADCDCD5D7D7D3D5D5D5D7D7D7D9D9D4D6D6D3D5D5D7D9D9D9DBDBD9DBDBD7
+        D9D9E6E7E5E6E7E5E6E7E5E5E6E4E3E3E3E2E2E2E1E1E1E0E0E0E1E1E1E0E0E0
+        E1E1E1E2E2E2E3E3E3E4E4E4E4E4E4E4E6E6E3E5E5E2E4E4E0E2E2DEE0E0DEE0
+        E0DDDFDFD8DADAD6D8D8D8DADADBDDDDD7D9D9D3D5D5D4D6D6D7D9D9D8DADAD7
+        D9D9E4E5E3E3E4E2E2E3E1E1E2E0E1E1E1E0E0E0DEDEDEDDDDDDDCDCDCDFDFDF
+        E2E2E2E3E3E3E4E4E4E4E4E4E3E4E4E2E4E4E2E4E4E1E3E3DFE1E1DEE0E0DEE0
+        E0DDDFDFDADCDCD8DADADADCDCDBDDDDDADCDCD8DADAD8DADADADCDCDADCDCD7
+        D9D9E0E1DFE0E1DFE0E1DFE1E2E0E0E0E0DFDFDFDDDDDDDDDDDDDDDDDDE0E0E0
+        E3E3E3E4E4E4E5E5E5E5E5E5E3E3E3E0E2E2E0E2E2E1E3E3E0E2E2E0E2E2DCDE
+        DEDCDEDEDADCDCD9DBDBDADCDCDADCDCDBDDDDDBDDDDDADCDCD9DBDBDADCDCDC
+        DEDEDEDFDDDDDEDCDDDEDCDDDEDCDDDDDDDDDDDDDDDDDDDEDEDEDFDFDFE2E2E2
+        E4E4E4E5E5E5E5E5E5E5E5E5E3E3E3DFE1E1E0E2E2E0E2E2DFE1E1DEE0E0DADC
+        DCDBDDDDDBDDDDD9DBDBDBDDDDD9DBDBDBDDDDDCDEDED9DBDBD9DBDBDCDEDEE1
+        E3E3}
+      MarginUnits = muPixels
+      Title.ClipText = False
+      Title.Color = clTeal
+      Title.Font.Color = clBlack
+      Title.Font.Height = -25
+      Title.Text.Strings = (
+        'Quantidade de pedido por per'#237'odo em percentual')
+      LeftAxis.Title.Caption = 'VALORES'
+      Legend.DrawBehind = True
+      Legend.FontSeriesColor = True
+      Legend.TextStyle = ltsPercent
+      Pages.AutoScale = True
+      TopAxis.LabelsFormat.Font.Brush.Gradient.Balance = 55
+      TopAxis.LabelsFormat.Font.Brush.Gradient.Direction = gdBottomTop
+      TopAxis.LabelsFormat.Font.Brush.Gradient.EndColor = clNavy
+      TopAxis.LabelsFormat.Font.Brush.Gradient.MidColor = 16744576
+      TopAxis.LabelsFormat.Font.Brush.Gradient.StartColor = 16777088
+      TopAxis.LabelsFormat.Font.Emboss.Color = clWhite
+      TopAxis.LabelsFormat.Font.Shadow.Color = clWhite
+      BevelOuter = bvNone
+      Color = clWhite
       TabOrder = 1
-      TextHint = 'Pesquisar Pedidos'
-      OnChange = edtPesquisaChange
+      DefaultCanvas = 'TGDIPlusCanvas'
+      PrintMargins = (
+        15
+        31
+        15
+        31)
+      ColorPaletteIndex = 21
+      object Series1: TBarSeries
+        BarBrush.Gradient.EndColor = 11129064
+        BarPen.Color = 16632904
+        ColorEachPoint = True
+        Marks.Callout.Length = 8
+        DataSource = FDQueryGrafico
+        XLabelsSource = 'data_emissao'
+        Emboss.Color = clWhite
+        Emboss.Visible = True
+        Gradient.EndColor = 11129064
+        MultiBar = mbSideAll
+        Shadow.Color = clWhite
+        XValues.DateTime = True
+        XValues.Name = 'X'
+        XValues.Order = loAscending
+        XValues.ValueSource = 'total_pedido'
+        YValues.Name = 'Bar'
+        YValues.Order = loNone
+        YValues.ValueSource = 'data_emissao'
+      end
     end
-  end
-  object grpCampos: TGroupBox
-    Left = 17
-    Top = 100
-    Width = 846
-    Height = 122
-    Caption = 'Pedidos'
-    TabOrder = 1
-    object lblCodigo: TLabel
-      Left = 16
-      Top = 21
-      Width = 56
-      Height = 19
-      Caption = 'C'#243'digo:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
-    object lblReferencia: TLabel
-      Left = 16
-      Top = 53
-      Width = 79
-      Height = 19
-      Caption = 'Refer'#234'ncia:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
-    object lblDataEmissao: TLabel
-      Left = 588
-      Top = 21
-      Width = 101
-      Height = 19
-      Caption = 'Data Emiss'#227'o:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
-    object lblTotalPedido: TLabel
-      Left = 319
-      Top = 90
-      Width = 95
-      Height = 19
-      Caption = 'Total Pedido:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
-    object lblCodigoCliente: TLabel
-      Left = 320
-      Top = 53
-      Width = 109
-      Height = 19
-      Caption = 'C'#243'digo Cliente:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
-    object lblNroPedido: TLabel
-      Left = 16
-      Top = 90
-      Width = 78
-      Height = 19
-      Caption = 'N'#186' Pedido:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
-    object lblTipoOperacao: TLabel
-      Left = 324
-      Top = 19
-      Width = 110
-      Height = 19
-      Caption = 'Tipo Opera'#231#227'o:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
-    object lblExemplo: TLabel
-      Left = 588
-      Top = 48
-      Width = 228
-      Height = 16
-      Alignment = taCenter
-      Caption = 'Exemplo: mes/dia/ano (12/01/2020)'
-      Color = clInfoBk
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clScrollBar
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-    end
-    object dbedtCodigo: TDBEdit
-      Left = 112
-      Top = 21
-      Width = 121
-      Height = 21
-      DataField = 'codigo'
-      DataSource = dsPedido
-      Enabled = False
-      TabOrder = 0
-    end
-    object dbedtReferencia: TDBEdit
-      Left = 112
-      Top = 55
-      Width = 121
-      Height = 21
-      DataField = 'referencia'
-      DataSource = dsPedido
-      Enabled = False
-      TabOrder = 1
-    end
-    object dbedtNumeroPedido: TDBEdit
-      Left = 112
-      Top = 92
-      Width = 121
-      Height = 21
-      DataField = 'nro_pedido'
-      DataSource = dsPedido
-      Enabled = False
+    object btnImprimir: TButton
+      Left = 14
+      Top = 360
+      Width = 75
+      Height = 25
+      Caption = '&Imprimir'
       TabOrder = 2
-    end
-    object dbedtDataEmissao: TDBEdit
-      Left = 695
-      Top = 21
-      Width = 121
-      Height = 21
-      DataField = 'data_emissao'
-      DataSource = dsPedido
-      Enabled = False
-      TabOrder = 6
-    end
-    object dbedtCodigoCliente: TDBEdit
-      Left = 440
-      Top = 55
-      Width = 121
-      Height = 21
-      DataField = 'codigo_cliente'
-      DataSource = dsPedido
-      Enabled = False
-      TabOrder = 4
-    end
-    object dbedtTotalPedido: TDBEdit
-      Left = 440
-      Top = 92
-      Width = 121
-      Height = 21
-      DataField = 'total_pedido'
-      DataSource = dsPedido
-      Enabled = False
-      TabOrder = 5
-    end
-    object dbcbbtipo_operacao: TDBComboBox
-      Left = 440
-      Top = 23
-      Width = 121
-      Height = 21
-      DataField = 'tipo_operacao'
-      DataSource = dsPedido
-      Enabled = False
-      Items.Strings = (
-        'ENTRADA'
-        'SAIDA')
-      TabOrder = 3
+      OnClick = btnImprimirClick
     end
   end
-  object dsPedido: TDataSource
-    DataSet = dmCadPedido.FDQueryPedido
-    Left = 14
-    Top = 223
+  object FDConnectionGrafico: TFDConnection
+    Params.Strings = (
+      'Database=dbAgrotis'
+      'User_Name=delphi'
+      'Password=delphi'
+      'Server=DESKTOP-FPNQ6CD'
+      'DriverID=MSSQL')
+    Connected = True
+    Left = 776
+    Top = 112
+  end
+  object FDQueryGrafico: TFDQuery
+    Active = True
+    Connection = FDConnectionGrafico
+    SQL.Strings = (
+      'select * from pedido')
+    Left = 816
+    Top = 112
   end
 end

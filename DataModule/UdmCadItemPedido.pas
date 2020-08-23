@@ -14,7 +14,6 @@ type
     FDQueryItemPedidoProduto: TFDQuery;
     FDQueryItemPedidoPedido: TFDQuery;
     FDCommandAtualizaTotalPedido: TFDCommand;
-    FDCommandDeletaTotalPedido: TFDCommand;
   private
     { Private declarations }
   public
@@ -23,8 +22,7 @@ type
     procedure pesquisaItemPedido(const conteudo:string);
     procedure carregaComboItemPedidoCodigoProduto;
 
-    procedure atualizaCampoTotalPedido(valor:Integer; codigo:Integer);
-    procedure subtraiCampoTotalPedido(valor:integer; codigo:integer);
+    procedure atualizaCampoTotalPedido(codigo:Integer);
     function carregaComboItemPedidoCodigoPedido: String;
   end;
 
@@ -41,12 +39,10 @@ uses UdmConexao;
 
 { TdmCadPedidoItem }
 
-procedure TdmCadPedidoItem.atualizaCampoTotalPedido(valor:Integer;
-  codigo:Integer);
+procedure TdmCadPedidoItem.atualizaCampoTotalPedido(codigo:Integer);
 begin
   FDCommandAtualizaTotalPedido.Connection := dmConexao.getConnection;
-  FDCommandAtualizaTotalPedido.ParamByName('VALOR_PEDIDO').Asinteger := valor;
-  FDCommandAtualizaTotalPedido.ParamByName('CODIGO').Asinteger := codigo;
+  FDCommandAtualizaTotalPedido.ParamByName('CODIGO_PEDIDO').Asinteger := codigo;
   FDCommandAtualizaTotalPedido.Execute();
 end;
 
@@ -60,7 +56,7 @@ begin
     FDQueryItemPedidoPedido.Close;
     FDQueryItemPedidoPedido.SQL.Clear;
     FDQueryItemPedidoPedido.SQL.Text :=
-    'SELECT codigo,nro_pedido FROM PEDIDO ';
+    'SELECT codigo FROM PEDIDO ';
     FDQueryItemPedidoPedido.Open;
 
     while not(FDQueryItemPedidoPedido.eof) do
@@ -121,14 +117,4 @@ begin
     FDQueryItemPedido.Open;
   End;
 end;
-
-procedure TdmCadPedidoItem.subtraiCampoTotalPedido(valor: integer;
-  codigo: integer);
-begin
-  FDCommandDeletaTotalPedido.Connection := dmConexao.getConnection;
-  FDCommandDeletaTotalPedido.ParamByName('VALOR_PEDIDO').Asinteger := valor;
-  FDCommandDeletaTotalPedido.ParamByName('CODIGO').Asinteger := codigo;
-  FDCommandDeletaTotalPedido.Execute();
-end;
-
 end.

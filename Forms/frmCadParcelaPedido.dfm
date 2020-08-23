@@ -1,6 +1,7 @@
-object FormCadParcelaPedido: TFormCadParcelaPedido
+object formCadParcelaPedido: TformCadParcelaPedido
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Cadastro e pesquisa de parcela de pedidos'
   ClientHeight = 516
@@ -13,6 +14,7 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object shp2: TShape
@@ -24,7 +26,7 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
     ExplicitLeft = -10
     ExplicitTop = -10
   end
-  object img2: TImage
+  object imgFundo: TImage
     Left = -10
     Top = 0
     Width = 895
@@ -10708,7 +10710,7 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       4C600FABFFD9}
     Stretch = True
   end
-  object lbl1: TLabel
+  object lblTitulo: TLabel
     Left = 8
     Top = 8
     Width = 537
@@ -10721,7 +10723,7 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
     Font.Style = []
     ParentFont = False
   end
-  object img1: TImage
+  object imgLogo: TImage
     Left = 670
     Top = 15
     Width = 205
@@ -11335,13 +11337,13 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
     Width = 868
     Height = 413
   end
-  object grp1: TGroupBox
+  object grpGrid: TGroupBox
     Left = 14
     Top = 242
     Width = 854
     Height = 258
     TabOrder = 0
-    object lbl9: TLabel
+    object lblPesquisa: TLabel
       Left = 647
       Top = 14
       Width = 67
@@ -11354,17 +11356,55 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       Font.Style = []
       ParentFont = False
     end
-    object dbgrd1: TDBGrid
+    object dbgrdParcelaPedido: TDBGrid
       Left = 8
       Top = 39
       Width = 836
       Height = 176
+      DataSource = dsParcelaPedido
+      Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTitleClick, dgTitleHotTrack]
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo_parcela'
+          Title.Caption = 'C'#243'digo Parcela'
+          Width = 107
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'codigo_pedido'
+          Title.Caption = 'C'#243'digo Pedido'
+          Width = 101
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'data_vencimento'
+          Title.Caption = 'Data Vencimento'
+          Width = 109
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'valor_parcela'
+          Title.Caption = 'Valor Parcela'
+          Width = 127
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'forma_pgto'
+          Title.Caption = 'Forma Pagamento'
+          Width = 114
+          Visible = True
+        end>
     end
     object btnCancelar: TButton
       Left = 332
@@ -11372,7 +11412,9 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       Width = 75
       Height = 25
       Caption = '&Cancelar'
-      TabOrder = 1
+      Enabled = False
+      TabOrder = 6
+      OnClick = btnCancelarClick
     end
     object btnSalvar: TButton
       Left = 251
@@ -11380,7 +11422,9 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       Width = 75
       Height = 25
       Caption = '&Salvar'
-      TabOrder = 2
+      Enabled = False
+      TabOrder = 5
+      OnClick = btnSalvarClick
     end
     object btnExcluir: TButton
       Left = 170
@@ -11388,7 +11432,8 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       Width = 75
       Height = 25
       Caption = '&Excluir'
-      TabOrder = 3
+      TabOrder = 4
+      OnClick = btnExcluirClick
     end
     object btnAlterar: TButton
       Left = 89
@@ -11396,7 +11441,8 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       Width = 75
       Height = 25
       Caption = '&Alterar'
-      TabOrder = 4
+      TabOrder = 3
+      OnClick = btnAlterarClick
     end
     object btnNovo: TButton
       Left = 8
@@ -11404,38 +11450,41 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       Width = 75
       Height = 25
       Caption = '&Novo'
-      TabOrder = 5
+      TabOrder = 2
+      OnClick = btnNovoClick
     end
-    object btn1: TButton
-      Left = 769
+    object btnFechar: TButton
+      Left = 768
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Fechar'
-      TabOrder = 6
+      TabOrder = 7
+      OnClick = btnFecharClick
+    end
+    object PesquisaParcelaPedido: TSearchBox
+      Left = 720
+      Top = 12
+      Width = 124
+      Height = 21
+      TabOrder = 1
+      TextHint = 'Pesquisar Produtos'
+      OnChange = PesquisaParcelaPedidoChange
     end
   end
-  object SearchBox1: TSearchBox
-    Left = 734
-    Top = 254
-    Width = 124
-    Height = 21
-    TabOrder = 1
-    TextHint = 'Pesquisar Produtos'
-  end
-  object grp2: TGroupBox
+  object grpDados: TGroupBox
     Left = 14
     Top = 104
     Width = 854
     Height = 132
     Caption = 'Produtos'
-    TabOrder = 2
-    object lbl2: TLabel
+    TabOrder = 1
+    object lblCodigo_Parcela: TLabel
       Left = 16
-      Top = 52
-      Width = 117
+      Top = 28
+      Width = 111
       Height = 19
-      Caption = 'C'#243'digo Produto:'
+      Caption = 'C'#243'digo Parcela:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -11443,12 +11492,12 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       Font.Style = []
       ParentFont = False
     end
-    object lbl3: TLabel
-      Left = 330
-      Top = 52
-      Width = 128
+    object lblData_vencimento: TLabel
+      Left = 588
+      Top = 28
+      Width = 126
       Height = 19
-      Caption = 'Descri'#231#227'o Produto'
+      Caption = 'Data Vencimento:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -11456,21 +11505,120 @@ object FormCadParcelaPedido: TFormCadParcelaPedido
       Font.Style = []
       ParentFont = False
     end
-    object edtCodProduto: TEdit
-      Left = 139
-      Top = 52
+    object lblCodigo_pedido: TLabel
+      Left = 16
+      Top = 63
+      Width = 109
+      Height = 19
+      Caption = 'C'#243'digo Pedido:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblValor_parcela: TLabel
+      Left = 300
+      Top = 63
+      Width = 98
+      Height = 19
+      Caption = 'Valor Parcela:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblForma_pgto: TLabel
+      Left = 300
+      Top = 28
+      Width = 135
+      Height = 19
+      Caption = 'Forma Pagamento:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblExemplo: TLabel
+      Left = 588
+      Top = 55
+      Width = 256
+      Height = 16
+      Alignment = taCenter
+      Caption = 'Exemplo: mes/dia/ano (12/01/2020)'
+      Color = clInfoBk
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clScrollBar
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+    end
+    object dbedtdata_vencimento: TDBEdit
+      Left = 723
+      Top = 28
       Width = 121
       Height = 21
+      DataField = 'data_vencimento'
+      DataSource = dsParcelaPedido
       Enabled = False
-      TabOrder = 0
-      TextHint = '0'
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 4
     end
-    object mmoDescProduto: TMemo
-      Left = 464
-      Top = 29
-      Width = 380
-      Height = 84
+    object dbedtvalor_parcela: TDBEdit
+      Left = 441
+      Top = 65
+      Width = 121
+      Height = 21
+      DataField = 'valor_parcela'
+      DataSource = dsParcelaPedido
+      Enabled = False
+      TabOrder = 3
+    end
+    object dbcbbforma_pgto: TDBComboBox
+      Left = 441
+      Top = 28
+      Width = 121
+      Height = 21
+      DataField = 'forma_pgto'
+      DataSource = dsParcelaPedido
+      Enabled = False
+      Items.Strings = (
+        'AVISTA'
+        'PRAZO')
+      TabOrder = 2
+    end
+    object dbcbbcodigo_pedido: TDBComboBox
+      Left = 133
+      Top = 65
+      Width = 121
+      Height = 21
+      DataField = 'codigo_pedido'
+      DataSource = dsParcelaPedido
+      Enabled = False
       TabOrder = 1
     end
+    object dbedtcodigo_parcela: TDBEdit
+      Left = 133
+      Top = 28
+      Width = 121
+      Height = 21
+      DataField = 'codigo_parcela'
+      DataSource = dsParcelaPedido
+      Enabled = False
+      TabOrder = 0
+    end
+  end
+  object dsParcelaPedido: TDataSource
+    DataSet = dmCadParcelaPedido.FDQueryCadParcelaPedido
+    Left = 110
+    Top = 200
   end
 end

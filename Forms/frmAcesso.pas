@@ -8,19 +8,18 @@ uses
   Vcl.Imaging.pngimage, Vcl.Imaging.jpeg, Vcl.ExtCtrls;
 
 type
-  TFormAcesso = class(TForm)
+  TformAcesso = class(TForm)
     imgAcesso: TImage;
-    btn2: TButton;
+    btnAcesso: TButton;
     lblStatus: TLabel;
-    img1: TImage;
-    img2: TImage;
-    shp1: TShape;
-    actvtyndctr1: TActivityIndicator;
-    lbl1: TLabel;
-    procedure btn2Click(Sender: TObject);
+    imgLogo: TImage;
+    imgFechar: TImage;
+    shpLayout: TShape;
+    actvtyndctranimador: TActivityIndicator;
+    lblInfo: TLabel;
+    procedure btnAcessoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure img2Click(Sender: TObject);
-    procedure FormShow(Sender: TObject);
+    procedure imgFecharClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,7 +27,7 @@ type
   end;
 
 var
-  FormAcesso: TFormAcesso;
+  formAcesso: TformAcesso;
 
 implementation
 
@@ -36,24 +35,19 @@ implementation
 
 uses frmPrincipal;
 
-procedure TFormAcesso.btn2Click(Sender: TObject);
+procedure TformAcesso.btnAcessoClick(Sender: TObject);
 begin
   FormPrincipal := TFormPrincipal.Create(self);
   FormPrincipal.ShowModal;
 end;
 
-procedure TFormAcesso.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TformAcesso.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
   FormAcesso:= Nil;
 end;
 
-procedure TFormAcesso.FormShow(Sender: TObject);
-begin
-  btn2.Brush.Color := clWhite;
-end;
-
-procedure TFormAcesso.img2Click(Sender: TObject);
+procedure TformAcesso.imgFecharClick(Sender: TObject);
 begin
   Close;
 end;

@@ -2,16 +2,18 @@ program Agrotis;
 
 uses
   Vcl.Forms,
-  frmAcesso in 'Forms\frmAcesso.pas' {FormAcesso},
-  frmPrincipal in 'Forms\frmPrincipal.pas' {FormPrincipal},
+  frmAcesso in 'Forms\frmAcesso.pas' {formAcesso},
+  frmPrincipal in 'Forms\frmPrincipal.pas' {formPrincipal},
   frmCadProduto in 'Forms\frmCadProduto.pas' {FormCadProduto},
-  frmCadPedido in 'Forms\frmCadPedido.pas' {FormCadPedido},
-  frmCadItemPedido in 'Forms\frmCadItemPedido.pas' {FormCadItemPedido},
-  frmCadParcelaPedido in 'Forms\frmCadParcelaPedido.pas' {FormCadParcelaPedido},
+  frmCadPedido in 'Forms\frmCadPedido.pas' {formCadPedido},
+  frmCadItemPedido in 'Forms\frmCadItemPedido.pas' {formCadItemPedido},
+  frmCadParcelaPedido in 'Forms\frmCadParcelaPedido.pas' {formCadParcelaPedido},
   UdmConexao in 'DataModule\UdmConexao.pas' {dmConexao: TDataModule},
   UdmCadProduto in 'DataModule\UdmCadProduto.pas' {dmCadProduto: TDataModule},
   UdmCadPedido in 'DataModule\UdmCadPedido.pas' {dmCadPedido: TDataModule},
-  UdmCadItemPedido in 'DataModule\UdmCadItemPedido.pas' {dmCadPedidoItem: TDataModule};
+  UdmCadItemPedido in 'DataModule\UdmCadItemPedido.pas' {dmCadPedidoItem: TDataModule},
+  UdmCadParcelaPedido in 'DataModule\UdmCadParcelaPedido.pas' {dmCadParcelaPedido: TDataModule},
+  frmGrafico in 'Forms\frmGrafico.pas' {formGraficoPedido};
 
 {$R *.res}
 
@@ -19,14 +21,16 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TdmConexao, dmConexao);
-  Application.CreateForm(TFormAcesso, FormAcesso);
+  Application.CreateForm(TformAcesso, formAcesso);
   Application.CreateForm(TdmCadProduto, dmCadProduto);
   Application.CreateForm(TdmCadPedido, dmCadPedido);
   Application.CreateForm(TdmCadPedidoItem, dmCadPedidoItem);
-  Application.CreateForm(TFormPrincipal, FormPrincipal);
+  Application.CreateForm(TdmCadParcelaPedido, dmCadParcelaPedido);
+  Application.CreateForm(TformPrincipal, formPrincipal);
   Application.CreateForm(TFormCadProduto, FormCadProduto);
-  Application.CreateForm(TFormCadPedido, FormCadPedido);
-  Application.CreateForm(TFormCadItemPedido, FormCadItemPedido);
-  Application.CreateForm(TFormCadParcelaPedido, FormCadParcelaPedido);
+  Application.CreateForm(TformCadPedido, formCadPedido);
+  Application.CreateForm(TformCadItemPedido, formCadItemPedido);
+  Application.CreateForm(TformCadParcelaPedido, formCadParcelaPedido);
+  Application.CreateForm(TformGraficoPedido, formGraficoPedido);
   Application.Run;
 end.

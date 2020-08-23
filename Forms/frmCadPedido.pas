@@ -9,29 +9,28 @@ uses
   Vcl.Mask, Vcl.DBCtrls, Vcl.ComCtrls;
 
 type
-  TFormCadPedido = class(TForm)
-    lbl1: TLabel;
-    shp2: TShape;
-    img2: TImage;
-    shp1: TShape;
-    grp1: TGroupBox;
-    dbgrd1: TDBGrid;
+  TformCadPedido = class(TForm)
+    lblTitulo: TLabel;
+    shpFundo: TShape;
+    imgFundo: TImage;
+    shpLayout: TShape;
+    grpGrid: TGroupBox;
+    dbgrdPedido: TDBGrid;
     btnCancelar: TButton;
     btnSalvar: TButton;
     btnExcluir: TButton;
     btnAlterar: TButton;
     btnNovo: TButton;
-    SearchBox1: TSearchBox;
-    grp2: TGroupBox;
-    lbl2: TLabel;
-    lbl3: TLabel;
-    lbl5: TLabel;
-    lbl8: TLabel;
-    lbl6: TLabel;
-    lbl4: TLabel;
-    lbl7: TLabel;
-    lbl9: TLabel;
-    img1: TImage;
+    grpCampos: TGroupBox;
+    lblCodigo: TLabel;
+    lblReferencia: TLabel;
+    lblDataEmissao: TLabel;
+    lblTotalPedido: TLabel;
+    lblCodigoCliente: TLabel;
+    lblNroPedido: TLabel;
+    lblTipoOperacao: TLabel;
+    lblPesquisar: TLabel;
+    imgLogo: TImage;
     dsPedido: TDataSource;
     dbedtCodigo: TDBEdit;
     dbedtReferencia: TDBEdit;
@@ -41,6 +40,8 @@ type
     dbedtTotalPedido: TDBEdit;
     dbcbbtipo_operacao: TDBComboBox;
     btnFechar: TButton;
+    lblExemplo: TLabel;
+    edtPesquisa: TSearchBox;
     procedure FormCreate(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
@@ -48,6 +49,7 @@ type
     procedure btnSalvarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
+    procedure edtPesquisaChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,7 +57,7 @@ type
   end;
 
 var
-  FormCadPedido: TFormCadPedido;
+  formCadPedido: TformCadPedido;
 
 implementation
 
@@ -63,7 +65,7 @@ implementation
 
 uses UdmCadPedido, UdmCadProduto;
 
-procedure TFormCadPedido.btnAlterarClick(Sender: TObject);
+procedure TformCadPedido.btnAlterarClick(Sender: TObject);
 begin
   btnAlterar.Enabled := False;
   btnExcluir.Enabled := False;
@@ -74,8 +76,6 @@ begin
   dbedtNumeroPedido.Enabled := True;
   dbedtDataEmissao.Enabled := True;
   dbedtCodigoCliente.Enabled:=True;
-  //dbedtTipoOperacao.Enabled:=True;
-  //dbedtTotalPedido.Enabled := True;
   dbcbbtipo_operacao.Enabled := True;
 
   btnSalvar.Enabled := True;
@@ -89,7 +89,7 @@ begin
   end;
 end;
 
-procedure TFormCadPedido.btnCancelarClick(Sender: TObject);
+procedure TformCadPedido.btnCancelarClick(Sender: TObject);
 begin
   dbedtCodigo.Enabled := False;
   dbedtReferencia.Enabled := False;
@@ -115,7 +115,7 @@ begin
   end;
 end;
 
-procedure TFormCadPedido.btnExcluirClick(Sender: TObject);
+procedure TformCadPedido.btnExcluirClick(Sender: TObject);
 begin
    try
     dmCadPedido.FDQueryPedido.Delete;
@@ -134,12 +134,12 @@ begin
   end;
 end;
 
-procedure TFormCadPedido.btnFecharClick(Sender: TObject);
+procedure TformCadPedido.btnFecharClick(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TFormCadPedido.btnNovoClick(Sender: TObject);
+procedure TformCadPedido.btnNovoClick(Sender: TObject);
 begin
   btnNovo.Enabled:= False;
   try
@@ -171,9 +171,12 @@ begin
   btnCancelar.Enabled := True;
 end;
 
-procedure TFormCadPedido.btnSalvarClick(Sender: TObject);
+procedure TformCadPedido.btnSalvarClick(Sender: TObject);
 begin
-  dbedtTotalPedido.Text:= '0';
+  // Is used in first record
+  if string.Equals(dbedtTotalPedido.Text, EmptyStr) then
+    dbedtTotalPedido.Text:= '0';
+
   if string.Equals(Trim(dbedtCodigo.Text), EmptyStr) or
      string.Equals(Trim(dbedtReferencia.Text), EmptyStr) or
      string.Equals(Trim(dbedtNumeroPedido.Text), EmptyStr) or
@@ -191,9 +194,12 @@ begin
   try
     dmCadPedido.FDQueryPedido.Post;
   except on E: Exception do
-    Application.MessageBox(
-      pchar('Erro ao Salvar, Messagem de erro:' + E.Message),
-       'Erro ao Salvar',MB_ICONERROR+MB_OK);
+    begin
+      Application.MessageBox(
+        pchar('Erro ao Salvar, Messagem de erro:' + E.Message),
+         'Erro ao Salvar',MB_ICONERROR+MB_OK);
+         Exit;
+    end;
   end;
 
   btnExcluir.Enabled := True;
@@ -212,9 +218,8 @@ begin
   dbedtTotalPedido.Enabled := False;
 end;
 
-procedure TFormCadPedido.FormCreate(Sender: TObject);
+procedure TformCadPedido.FormCreate(Sender: TObject);
 begin
-
   dmCadPedido.inicializaConsultaPedido;
   dsPedido.DataSet := dmCadPedido.FDQueryPedido;
 
@@ -227,6 +232,10 @@ begin
   end;
 
   btnSalvar.Enabled := False;
+end;
+procedure TformCadPedido.edtPesquisaChange(Sender: TObject);
+begin
+  dmCadPedido.pesquisaPedido(edtPesquisa.Text);
 end;
 
 end.

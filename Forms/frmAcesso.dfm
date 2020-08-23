@@ -1,4 +1,4 @@
-object FormAcesso: TFormAcesso
+object formAcesso: TformAcesso
   Left = 0
   Top = 0
   BorderIcons = []
@@ -15,10 +15,9 @@ object FormAcesso: TFormAcesso
   OldCreateOrder = False
   Position = poScreenCenter
   OnClose = FormClose
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object shp1: TShape
+  object shpLayout: TShape
     Left = 0
     Top = 0
     Width = 616
@@ -10723,11 +10722,11 @@ object FormAcesso: TFormAcesso
     ParentFont = False
     WordWrap = True
   end
-  object img1: TImage
+  object imgLogo: TImage
     Left = 8
-    Top = 104
+    Top = 88
     Width = 600
-    Height = 113
+    Height = 129
     Center = True
     Picture.Data = {
       0954506E67496D61676589504E470D0A1A0A0000000D494844520000065D0000
@@ -11332,7 +11331,7 @@ object FormAcesso: TFormAcesso
       0FCAF884F23B4279040000000049454E44AE426082}
     Stretch = True
   end
-  object img2: TImage
+  object imgFechar: TImage
     Left = 584
     Top = 8
     Width = 24
@@ -11471,29 +11470,29 @@ object FormAcesso: TFormAcesso
       77E70000000049454E44AE426082}
     Proportional = True
     ShowHint = True
-    OnClick = img2Click
+    OnClick = imgFecharClick
   end
-  object lbl1: TLabel
-    Left = 8
-    Top = 264
-    Width = 432
-    Height = 25
+  object lblInfo: TLabel
+    Left = 27
+    Top = 254
+    Width = 356
+    Height = 21
     Caption = 'Sistemas inteligentes para o Agroneg'#243'cio'
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
-    Font.Height = -21
+    Font.Height = -17
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     Font.Quality = fqClearTypeNatural
     ParentColor = False
     ParentFont = False
   end
-  object btn2: TButton
+  object btnAcesso: TButton
     Left = 495
-    Top = 246
+    Top = 254
     Width = 113
-    Height = 42
+    Height = 34
     Hint = 'Clique para acessar o sistema Agrotis.'
     Caption = '&Acessar'
     Default = True
@@ -11508,12 +11507,13 @@ object FormAcesso: TFormAcesso
     ParentShowHint = False
     ShowHint = True
     TabOrder = 0
-    OnClick = btn2Click
+    OnClick = btnAcessoClick
   end
-  object actvtyndctr1: TActivityIndicator
-    Left = 446
-    Top = 256
+  object actvtyndctranimador: TActivityIndicator
+    Left = 8
+    Top = 240
     Animate = True
     IndicatorColor = aicWhite
+    IndicatorSize = aisLarge
   end
 end

@@ -17,7 +17,7 @@ object FormCadProduto: TFormCadProduto
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object shp2: TShape
+  object shpFundo: TShape
     Left = 0
     Top = 0
     Width = 885
@@ -26,7 +26,7 @@ object FormCadProduto: TFormCadProduto
     ExplicitWidth = 788
     ExplicitHeight = 392
   end
-  object img2: TImage
+  object imgFundo: TImage
     Left = 0
     Top = 0
     Width = 885
@@ -10710,7 +10710,7 @@ object FormCadProduto: TFormCadProduto
       4C600FABFFD9}
     Stretch = True
   end
-  object lbl1: TLabel
+  object lblTitulo: TLabel
     Left = 8
     Top = 8
     Width = 379
@@ -10723,7 +10723,7 @@ object FormCadProduto: TFormCadProduto
     Font.Style = []
     ParentFont = False
   end
-  object img1: TImage
+  object imgLogo: TImage
     Left = 672
     Top = 15
     Width = 205
@@ -11331,21 +11331,21 @@ object FormCadProduto: TFormCadProduto
       0FCAF884F23B4279040000000049454E44AE426082}
     Stretch = True
   end
-  object shp1: TShape
+  object shpLayout: TShape
     Left = 8
     Top = 95
     Width = 868
     Height = 413
   end
-  object grp1: TGroupBox
+  object grpGrid: TGroupBox
     Left = 14
     Top = 242
     Width = 854
     Height = 258
     TabOrder = 0
-    object lbl9: TLabel
+    object lblPesquisa: TLabel
       Left = 642
-      Top = 14
+      Top = 10
       Width = 73
       Height = 19
       Caption = 'Pesquisar:'
@@ -11356,10 +11356,10 @@ object FormCadProduto: TFormCadProduto
       Font.Style = []
       ParentFont = False
     end
-    object dbgrd1: TDBGrid
-      Left = 3
+    object dbgrdGrid: TDBGrid
+      Left = 10
       Top = 39
-      Width = 836
+      Width = 831
       Height = 176
       DataSource = dsProduto
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgCancelOnExit, dgTitleHotTrack]
@@ -11386,50 +11386,50 @@ object FormCadProduto: TFormCadProduto
         end>
     end
     object btnCancelar: TButton
-      Left = 327
+      Left = 334
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Cancelar'
       Enabled = False
-      TabOrder = 1
+      TabOrder = 6
       OnClick = btnCancelarClick
     end
     object btnSalvar: TButton
-      Left = 246
+      Left = 253
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Salvar'
       Enabled = False
-      TabOrder = 2
+      TabOrder = 5
       OnClick = btnSalvarClick
     end
     object btnExcluir: TButton
-      Left = 165
+      Left = 172
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Excluir'
-      TabOrder = 3
+      TabOrder = 4
       OnClick = btnExcluirClick
     end
     object btnAlterar: TButton
-      Left = 84
+      Left = 91
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Alterar'
-      TabOrder = 4
+      TabOrder = 3
       OnClick = btnAlterarClick
     end
     object btnNovo: TButton
-      Left = 3
+      Left = 10
       Top = 221
       Width = 75
       Height = 25
       Caption = '&Novo'
-      TabOrder = 5
+      TabOrder = 2
       OnClick = btnNovoClick
     end
     object btnFechar: TButton
@@ -11438,27 +11438,27 @@ object FormCadProduto: TFormCadProduto
       Width = 75
       Height = 25
       Caption = '&Fechar'
-      TabOrder = 6
+      TabOrder = 7
       OnClick = btnFecharClick
     end
+    object edtPesquisa: TSearchBox
+      Left = 717
+      Top = 12
+      Width = 124
+      Height = 21
+      TabOrder = 1
+      TextHint = 'Pesquisar Produtos'
+      OnChange = edtPesquisaChange
+    end
   end
-  object PesquisaProduto: TSearchBox
-    Left = 731
-    Top = 254
-    Width = 124
-    Height = 21
-    TabOrder = 1
-    TextHint = 'Pesquisar Produtos'
-    OnChange = PesquisaProdutoChange
-  end
-  object grp2: TGroupBox
+  object grpCampos: TGroupBox
     Left = 14
     Top = 104
     Width = 854
     Height = 132
     Caption = 'Produtos'
-    TabOrder = 2
-    object lbl2: TLabel
+    TabOrder = 1
+    object lblProduto: TLabel
       Left = 24
       Top = 32
       Width = 117
@@ -11471,7 +11471,7 @@ object FormCadProduto: TFormCadProduto
       Font.Style = []
       ParentFont = False
     end
-    object lbl3: TLabel
+    object lblDescricao: TLabel
       Left = 290
       Top = 32
       Width = 128

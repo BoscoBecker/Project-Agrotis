@@ -1,10 +1,11 @@
-object FormCadItemPedido: TFormCadItemPedido
+object formCadItemPedido: TformCadItemPedido
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
   Caption = 'Cadastro e pesquisa de Itens de pedidos'
-  ClientHeight = 512
-  ClientWidth = 882
+  ClientHeight = 522
+  ClientWidth = 892
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,18 +17,18 @@ object FormCadItemPedido: TFormCadItemPedido
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object shp2: TShape
+  object shpFundo: TShape
     Left = 0
     Top = 0
-    Width = 882
-    Height = 512
+    Width = 892
+    Height = 522
     Align = alClient
     ExplicitLeft = -10
     ExplicitTop = -10
     ExplicitWidth = 885
     ExplicitHeight = 516
   end
-  object img2: TImage
+  object imgFundo: TImage
     Left = -10
     Top = 0
     Width = 892
@@ -10711,7 +10712,7 @@ object FormCadItemPedido: TFormCadItemPedido
       4C600FABFFD9}
     Stretch = True
   end
-  object lbl1: TLabel
+  object lblTitulo: TLabel
     Left = 8
     Top = 8
     Width = 438
@@ -10724,13 +10725,13 @@ object FormCadItemPedido: TFormCadItemPedido
     Font.Style = []
     ParentFont = False
   end
-  object shp1: TShape
+  object shpLayout: TShape
     Left = 7
     Top = 93
     Width = 868
     Height = 413
   end
-  object img1: TImage
+  object imgLogo: TImage
     Left = 657
     Top = 15
     Width = 205
@@ -11338,13 +11339,13 @@ object FormCadItemPedido: TFormCadItemPedido
       0FCAF884F23B4279040000000049454E44AE426082}
     Stretch = True
   end
-  object grp1: TGroupBox
+  object grpGrid: TGroupBox
     Left = 14
     Top = 225
     Width = 854
     Height = 272
     TabOrder = 0
-    object lbl9: TLabel
+    object lblPesquisa: TLabel
       Left = 649
       Top = 31
       Width = 67
@@ -11357,12 +11358,13 @@ object FormCadItemPedido: TFormCadItemPedido
       Font.Style = []
       ParentFont = False
     end
-    object dbgrd1: TDBGrid
+    object dbgrdItemPedido: TDBGrid
       Left = 10
       Top = 56
       Width = 834
       Height = 176
       DataSource = dsItemPedido
+      Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTitleClick, dgTitleHotTrack]
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -11388,21 +11390,21 @@ object FormCadItemPedido: TFormCadItemPedido
           Expanded = False
           FieldName = 'qtd'
           Title.Caption = 'Quantidade'
-          Width = 150
+          Width = 191
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'valor_unit'
           Title.Caption = 'Valor do unit'#225'rio'
-          Width = 116
+          Width = 121
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'total_item'
           Title.Caption = 'Total do Item'
-          Width = 98
+          Width = 166
           Visible = True
         end>
     end
@@ -11413,7 +11415,7 @@ object FormCadItemPedido: TFormCadItemPedido
       Height = 25
       Caption = '&Cancelar'
       Enabled = False
-      TabOrder = 1
+      TabOrder = 6
       OnClick = btnCancelarClick
     end
     object btnSalvar: TButton
@@ -11423,7 +11425,7 @@ object FormCadItemPedido: TFormCadItemPedido
       Height = 25
       Caption = '&Salvar'
       Enabled = False
-      TabOrder = 2
+      TabOrder = 5
       OnClick = btnSalvarClick
     end
     object btnExcluir: TButton
@@ -11432,7 +11434,7 @@ object FormCadItemPedido: TFormCadItemPedido
       Width = 75
       Height = 25
       Caption = '&Excluir'
-      TabOrder = 3
+      TabOrder = 4
       OnClick = btnExcluirClick
     end
     object btnAlterar: TButton
@@ -11441,7 +11443,7 @@ object FormCadItemPedido: TFormCadItemPedido
       Width = 75
       Height = 25
       Caption = '&Alterar'
-      TabOrder = 4
+      TabOrder = 3
       OnClick = btnAlterarClick
     end
     object btnNovo: TButton
@@ -11450,35 +11452,36 @@ object FormCadItemPedido: TFormCadItemPedido
       Width = 75
       Height = 25
       Caption = '&Novo'
-      TabOrder = 5
+      TabOrder = 2
       OnClick = btnNovoClick
     end
-    object SearchBox1: TSearchBox
+    object edtpesquisa: TSearchBox
       Left = 722
       Top = 29
       Width = 121
       Height = 21
-      TabOrder = 6
+      TabOrder = 1
       TextHint = 'Pesquisar Item P.'
+      OnChange = edtpesquisaChange
     end
-    object btn1: TButton
+    object btnFechar: TButton
       Left = 769
       Top = 238
       Width = 75
       Height = 25
       Caption = '&Fechar'
       TabOrder = 7
-      OnClick = btn1Click
+      OnClick = btnFecharClick
     end
   end
-  object grp2: TGroupBox
+  object grpDados: TGroupBox
     Left = 20
     Top = 106
     Width = 854
     Height = 113
     Caption = 'Item Pedido '
     TabOrder = 1
-    object lbl2: TLabel
+    object lblCodigoProduto: TLabel
       Left = 33
       Top = 21
       Width = 117
@@ -11491,7 +11494,7 @@ object FormCadItemPedido: TFormCadItemPedido
       Font.Style = []
       ParentFont = False
     end
-    object lbl3: TLabel
+    object lblQtd: TLabel
       Left = 382
       Top = 25
       Width = 87
@@ -11504,7 +11507,7 @@ object FormCadItemPedido: TFormCadItemPedido
       Font.Style = []
       ParentFont = False
     end
-    object lbl4: TLabel
+    object lblValorUnit: TLabel
       Left = 392
       Top = 50
       Width = 77
@@ -11517,7 +11520,7 @@ object FormCadItemPedido: TFormCadItemPedido
       Font.Style = []
       ParentFont = False
     end
-    object lbl5: TLabel
+    object lblTotalItem: TLabel
       Left = 632
       Top = 25
       Width = 80
@@ -11530,7 +11533,7 @@ object FormCadItemPedido: TFormCadItemPedido
       Font.Style = []
       ParentFont = False
     end
-    object lbl6: TLabel
+    object lblCodigoPedido: TLabel
       Left = 41
       Top = 50
       Width = 109
@@ -11551,7 +11554,7 @@ object FormCadItemPedido: TFormCadItemPedido
       DataField = 'qtd'
       DataSource = dsItemPedido
       Enabled = False
-      TabOrder = 0
+      TabOrder = 2
     end
     object dbedtvalor_unit: TDBEdit
       Left = 475
@@ -11561,7 +11564,7 @@ object FormCadItemPedido: TFormCadItemPedido
       DataField = 'valor_unit'
       DataSource = dsItemPedido
       Enabled = False
-      TabOrder = 1
+      TabOrder = 3
     end
     object dbedttotal_item: TDBEdit
       Left = 718
@@ -11571,7 +11574,7 @@ object FormCadItemPedido: TFormCadItemPedido
       DataField = 'total_item'
       DataSource = dsItemPedido
       Enabled = False
-      TabOrder = 2
+      TabOrder = 4
     end
     object dbcbbcodigo: TDBComboBox
       Left = 156
@@ -11581,7 +11584,7 @@ object FormCadItemPedido: TFormCadItemPedido
       DataField = 'codigo_pedido'
       DataSource = dsItemPedido
       Enabled = False
-      TabOrder = 3
+      TabOrder = 1
     end
     object dblkcbbcodigo_produto: TDBLookupComboBox
       Left = 156
@@ -11594,7 +11597,7 @@ object FormCadItemPedido: TFormCadItemPedido
       KeyField = 'codigo_produto'
       ListField = 'descricao'
       ListSource = dsProduto
-      TabOrder = 4
+      TabOrder = 0
     end
   end
   object dsItemPedido: TDataSource

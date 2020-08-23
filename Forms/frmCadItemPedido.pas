@@ -9,42 +9,43 @@ uses
   Vcl.DBCtrls, Vcl.Mask,FireDAC.Comp.Client;
 
 type
-  TFormCadItemPedido = class(TForm)
-    lbl1: TLabel;
-    shp2: TShape;
-    img2: TImage;
-    shp1: TShape;
-    grp1: TGroupBox;
-    lbl9: TLabel;
-    dbgrd1: TDBGrid;
+  TformCadItemPedido = class(TForm)
+    lblTitulo: TLabel;
+    shpFundo: TShape;
+    imgFundo: TImage;
+    shpLayout: TShape;
+    grpGrid: TGroupBox;
+    lblPesquisa: TLabel;
+    dbgrdItemPedido: TDBGrid;
     btnCancelar: TButton;
     btnSalvar: TButton;
     btnExcluir: TButton;
     btnAlterar: TButton;
     btnNovo: TButton;
-    grp2: TGroupBox;
-    lbl2: TLabel;
-    SearchBox1: TSearchBox;
-    lbl3: TLabel;
-    lbl4: TLabel;
-    lbl5: TLabel;
-    img1: TImage;
-    lbl6: TLabel;
+    grpDados: TGroupBox;
+    lblCodigoProduto: TLabel;
+    edtpesquisa: TSearchBox;
+    lblQtd: TLabel;
+    lblValorUnit: TLabel;
+    lblTotalItem: TLabel;
+    imgLogo: TImage;
+    lblCodigoPedido: TLabel;
     dsItemPedido: TDataSource;
-    btn1: TButton;
+    btnFechar: TButton;
     dbedtqtd: TDBEdit;
     dbedtvalor_unit: TDBEdit;
     dbedttotal_item: TDBEdit;
     dsProduto: TDataSource;
     dbcbbcodigo: TDBComboBox;
     dblkcbbcodigo_produto: TDBLookupComboBox;
-    procedure btn1Click(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
+    procedure edtpesquisaChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,7 +53,8 @@ type
   end;
 
 var
-  FormCadItemPedido: TFormCadItemPedido;
+  formCadItemPedido: TformCadItemPedido;
+  editandoItemPedido : Boolean;
 
 implementation
 
@@ -60,12 +62,12 @@ implementation
 
 uses UdmCadItemPedido, UdmConexao, UdmCadProduto;
 
-procedure TFormCadItemPedido.btn1Click(Sender: TObject);
+procedure TformCadItemPedido.btnFecharClick(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TFormCadItemPedido.btnAlterarClick(Sender: TObject);
+procedure TformCadItemPedido.btnAlterarClick(Sender: TObject);
 begin
   btnAlterar.Enabled := False;
   btnExcluir.Enabled := False;
@@ -89,7 +91,7 @@ begin
   end;
 end;
 
-procedure TFormCadItemPedido.btnCancelarClick(Sender: TObject);
+procedure TformCadItemPedido.btnCancelarClick(Sender: TObject);
 begin
   dbcbbcodigo.Enabled := False;
   dblkcbbcodigo_produto.Enabled := False;
@@ -103,7 +105,6 @@ begin
 
   btnCancelar.Enabled:= False;
   btnSalvar.Enabled := False;
-
   try
     dmCadPedidoItem.FDQueryItemPedido.Cancel;
   except on E: Exception do
@@ -113,20 +114,25 @@ begin
   end;
 end;
 
-procedure TFormCadItemPedido.btnExcluirClick(Sender: TObject);
+procedure TformCadItemPedido.btnExcluirClick(Sender: TObject);
+var codigoPedido: Integer;
 begin
+  codigoPedido:= StrToInt(dbgrdItemPedido.Columns[1].Field.Value);
+
   try
     dmCadPedidoItem.FDQueryItemPedido.Delete;
   except on E: Exception do
-    Application.MessageBox(
-      pchar('Erro ao Excluir, Messagem de erro: ' + E.Message),
-         'Erro ao Excluir',MB_ICONERROR+MB_OK);
+    begin
+      Application.MessageBox(
+        pchar('Erro ao Excluir, Messagem de erro: ' + E.Message),
+           'Erro ao Excluir',MB_ICONERROR+MB_OK);
+      Exit;
+    end;
    end;
 
-  dmCadPedidoItem.subtraiCampoTotalPedido(StrToint(dbedttotal_item.Text),
-    StrToint(dbcbbcodigo.Text));
+  // Total do Pedido (calculado a partir do somatório do TOTAL DOS ITENS)
+  dmCadPedidoItem.atualizaCampoTotalPedido(codigoPedido);
 
-  // Methods
   dbcbbcodigo.Items.Text:= dmCadPedidoItem.carregaComboItemPedidoCodigoPedido;
 
   dmCadPedidoItem.carregaComboItemPedidoCodigoProduto;
@@ -135,7 +141,6 @@ begin
   dmCadPedidoItem.inicializaConsultaItemPedido;
   dsItemPedido.DataSet := dmCadPedidoItem.FDQueryItemPedido;
 
-  ///
   if dmCadPedidoItem.FDQueryItemPedido.IsEmpty then
   begin
     btnExcluir.Enabled := False;
@@ -145,7 +150,7 @@ begin
   end;
 end;
 
-procedure TFormCadItemPedido.btnNovoClick(Sender: TObject);
+procedure TformCadItemPedido.btnNovoClick(Sender: TObject);
 begin
   btnNovo.Enabled:= False;
   try
@@ -170,8 +175,10 @@ begin
   btnCancelar.Enabled := True;
 end;
 
-procedure TFormCadItemPedido.btnSalvarClick(Sender: TObject);
+procedure TformCadItemPedido.btnSalvarClick(Sender: TObject);
+var codigoPedido: Integer;
 begin
+  codigoPedido:= StrToInt(dbgrdItemPedido.Columns[1].Field.Value);
 
   if string.Equals(Trim(dbcbbcodigo.Text), EmptyStr) or
      string.Equals(Trim(dblkcbbcodigo_produto.Text), EmptyStr) or
@@ -187,15 +194,17 @@ begin
   try
     dmCadPedidoItem.FDQueryItemPedido.Post;
   except on E: Exception do
-    Application.MessageBox(
-      pchar('Erro ao Salvar, Messagem de erro:' + E.Message),
-       'Erro ao Salvar',MB_ICONERROR+MB_OK);
+    begin
+      Application.MessageBox(
+        pchar('Erro ao Salvar, Messagem de erro:' + E.Message),
+         'Erro ao Salvar',MB_ICONERROR+MB_OK);
+      Exit;
+    end;
   end;
 
-  dmCadPedidoItem.atualizaCampoTotalPedido(StrToint(dbedttotal_item.Text),
-    StrToint(dbcbbcodigo.Text));
+  // Total do Pedido (calculado a partir do somatório do TOTAL DOS ITENS)
+  dmCadPedidoItem.atualizaCampoTotalPedido(codigoPedido);
 
-  // Methods
   dbcbbcodigo.Items.Text:= dmCadPedidoItem.carregaComboItemPedidoCodigoPedido;
 
   dmCadPedidoItem.carregaComboItemPedidoCodigoProduto;
@@ -203,8 +212,6 @@ begin
 
   dmCadPedidoItem.inicializaConsultaItemPedido;
   dsItemPedido.DataSet := dmCadPedidoItem.FDQueryItemPedido;
-
-  ///
 
   btnExcluir.Enabled := True;
   btnAlterar.Enabled := True;
@@ -213,7 +220,6 @@ begin
   btnCancelar.Enabled := False;
   btnSalvar.Enabled := False;
 
-
   dbcbbcodigo.Enabled := False;
   dblkcbbcodigo_produto.Enabled := False;
   dbedtqtd.Enabled := False;
@@ -221,10 +227,8 @@ begin
   dbedttotal_item.Enabled := False;
 end;
 
-procedure TFormCadItemPedido.FormCreate(Sender: TObject);
+procedure TformCadItemPedido.FormCreate(Sender: TObject);
 begin
-
-  // Methods
   dbcbbcodigo.Items.Text:= dmCadPedidoItem.carregaComboItemPedidoCodigoPedido;
 
   dmCadPedidoItem.carregaComboItemPedidoCodigoProduto;
@@ -232,6 +236,20 @@ begin
 
   dmCadPedidoItem.inicializaConsultaItemPedido;
   dsItemPedido.DataSet := dmCadPedidoItem.FDQueryItemPedido;
+
+  if dmCadPedidoItem.FDQueryItemPedido.IsEmpty then
+  begin
+    btnExcluir.Enabled := False;
+    btnSalvar.Enabled := False;
+    btnAlterar.Enabled := False;
+    btnCancelar.Enabled := False;
+  end;
+
+  btnSalvar.Enabled := False;
+end;
+procedure TformCadItemPedido.edtpesquisaChange(Sender: TObject);
+begin
+  dmCadPedidoItem.pesquisaItemPedido(edtpesquisa.Text);
 end;
 
 end.
