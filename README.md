@@ -1,4 +1,4 @@
-# Projeto de software simples(Agrotis), tendo como requisitos o arquivo Requisitos.txt(raiz) 
+## Projeto para testes(Agrotis)
 
 ## Tecnologia
 Usando o IDE de desenvolvimento Embarcadero RAD Studio 10.2 Tokyo Architect 25.0.26309.314
@@ -10,7 +10,7 @@ Usando o IDE de desenvolvimento Embarcadero RAD Studio 10.2 Tokyo Architect 25.0
 
 ##  Microsoft SQL Server 2017 (RTM) - 14.0.1000.169 (X64)
 
-## Foi realizado um Bakcup da Base de dados, só restaurar, está na raiz do projeto pasta chamada de "DataModule", compactado.	 
+## Foi realizado um Bakcup da Base de dados, só restaurar, está na raiz do projeto pasta chamada de "DataBase", compactado.	 
 
 ## Informações de acesso a base de dados e conexão do sistemas.
 * Para o funcionamento correto banco na aplicação, deve-se configurar o IP ou hostname onde esta a base de dados
