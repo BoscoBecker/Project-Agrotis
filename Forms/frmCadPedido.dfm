@@ -10712,7 +10712,7 @@ object formCadPedido: TformCadPedido
   end
   object lblTitulo: TLabel
     Left = 8
-    Top = 8
+    Top = 32
     Width = 342
     Height = 48
     Caption = 'Cadastro de Pedido'
@@ -10731,7 +10731,7 @@ object formCadPedido: TformCadPedido
   end
   object imgLogo: TImage
     Left = 672
-    Top = 15
+    Top = 39
     Width = 205
     Height = 41
     Picture.Data = {
@@ -11483,6 +11483,15 @@ object formCadPedido: TformCadPedido
       Top = 11
       Width = 121
       Height = 21
+      Color = clInfoBk
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBackground
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
       TabOrder = 1
       TextHint = 'Pesquisar Pedidos'
       OnChange = edtPesquisaChange
@@ -11607,6 +11616,7 @@ object formCadPedido: TformCadPedido
       Top = 21
       Width = 121
       Height = 21
+      Align = alCustom
       DataField = 'codigo'
       DataSource = dsPedido
       Enabled = False
@@ -11617,6 +11627,7 @@ object formCadPedido: TformCadPedido
       Top = 55
       Width = 121
       Height = 21
+      Align = alCustom
       DataField = 'referencia'
       DataSource = dsPedido
       Enabled = False
@@ -11627,6 +11638,7 @@ object formCadPedido: TformCadPedido
       Top = 92
       Width = 121
       Height = 21
+      Align = alCustom
       DataField = 'nro_pedido'
       DataSource = dsPedido
       Enabled = False
@@ -11637,6 +11649,7 @@ object formCadPedido: TformCadPedido
       Top = 21
       Width = 121
       Height = 21
+      Align = alCustom
       DataField = 'data_emissao'
       DataSource = dsPedido
       Enabled = False
@@ -11647,6 +11660,7 @@ object formCadPedido: TformCadPedido
       Top = 55
       Width = 121
       Height = 21
+      Align = alCustom
       DataField = 'codigo_cliente'
       DataSource = dsPedido
       Enabled = False
@@ -11657,6 +11671,7 @@ object formCadPedido: TformCadPedido
       Top = 92
       Width = 121
       Height = 21
+      Align = alCustom
       DataField = 'total_pedido'
       DataSource = dsPedido
       Enabled = False
@@ -11667,6 +11682,7 @@ object formCadPedido: TformCadPedido
       Top = 23
       Width = 121
       Height = 21
+      Align = alCustom
       DataField = 'tipo_operacao'
       DataSource = dsPedido
       Enabled = False

@@ -113,6 +113,14 @@ begin
       pchar('Erro ao Cancelar, Messagem de erro: ' + E.Message),
          'Erro ao Cancelar',MB_ICONERROR+MB_OK);
   end;
+
+  if dmCadPedido.FDQueryPedido.IsEmpty then
+  begin
+    btnExcluir.Enabled := False;
+    btnSalvar.Enabled := False;
+    btnAlterar.Enabled := False;
+    btnCancelar.Enabled := False;
+  end;
 end;
 
 procedure TformCadPedido.btnExcluirClick(Sender: TObject);

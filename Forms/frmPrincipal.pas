@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.Menus,
-  Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.ComCtrls;
+  Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.ComCtrls, Winapi.ShellAPI, Vcl.StdCtrls,
+  Vcl.WinXCalendars;
 
 type
   TformPrincipal = class(TForm)
@@ -25,6 +26,9 @@ type
     imgLogo: TImage;
     tmrStatus: TTimer;
     Pedidoem1: TMenuItem;
+    Suporte1: TMenuItem;
+    lbl1: TLabel;
+    Calendario: TCalendarView;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CadastroPedido1Click(Sender: TObject);
@@ -35,6 +39,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure tmrStatusTimer(Sender: TObject);
     procedure Pedidoem1Click(Sender: TObject);
+    procedure Suporte1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -105,6 +110,11 @@ end;
 procedure TformPrincipal.Sobre1Click(Sender: TObject);
 begin
   application.MessageBox(PChar(dmConexao.getVersionMSSQLSERVER),'Sobre o SQL SERVER.', MB_ICONINFORMATION+MB_OK);
+end;
+
+procedure TformPrincipal.Suporte1Click(Sender: TObject);
+begin
+  ShellExecute(Handle,'open','https://agrotis.atlassian.net/servicedesk/customer/portal/6',nil,nil,SW_SHOW);
 end;
 
 procedure TformPrincipal.tmrStatusTimer(Sender: TObject);

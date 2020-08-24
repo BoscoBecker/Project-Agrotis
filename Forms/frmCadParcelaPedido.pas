@@ -108,6 +108,14 @@ begin
       pchar('Erro ao Cancelar, Messagem de erro: ' + E.Message),
          'Erro ao Cancelar',MB_ICONERROR+MB_OK);
   end;
+
+  if dmCadParcelaPedido.FDQueryCadParcelaPedido.IsEmpty then
+  begin
+    btnExcluir.Enabled := False;
+    btnSalvar.Enabled := False;
+    btnAlterar.Enabled := False;
+    btnCancelar.Enabled := False;
+  end;
 end;
 
 procedure TformCadParcelaPedido.btnExcluirClick(Sender: TObject);
@@ -166,10 +174,6 @@ end;
 procedure TformCadParcelaPedido.btnSalvarClick(Sender: TObject);
 var codigoPedido, valorParcela : Integer;
 begin
-  // save the values codigoPedido and valorParcela
-  codigoPedido:= StrToInt(dbgrdParcelaPedido.Columns[1].Field.Value);
-  valorParcela:= StrToInt(dbgrdParcelaPedido.Columns[3].Field.Value);
-
   if string.Equals(Trim(dbedtcodigo_parcela.Text), EmptyStr) or
      string.Equals(Trim(dbcbbcodigo_pedido.Text), EmptyStr) or
      string.Equals(Trim(dbcbbforma_pgto.Text), EmptyStr) or
@@ -182,6 +186,9 @@ begin
     Exit;
   end;
 
+  codigoPedido:= StrToInt(dbgrdParcelaPedido.Columns[1].Field.Value);
+  valorParcela:= StrToInt(dbgrdParcelaPedido.Columns[3].Field.Value);
+
   /// VALIDAÇÃO: o TOTAL DA(S) PARCELA(S) não pode ser maior do que o TOTAL DO PEDIDO
   if dmCadParcelaPedido.parcelamentoPedidoValido(valorParcela,codigoPedido) then
   begin
@@ -190,9 +197,24 @@ begin
             'MAIOR DO QUE O TOTAL DO PEDIDO, CÓDIGO '+'[ '+IntToStr(codigoPedido)+' ] !!!'),
             'VALIDAÇÃO', MB_ICONSTOP+MB_OK);
 
+    dmCadParcelaPedido.FDQueryCadParcelaPedido.Cancel;
+
     dbcbbcodigo_pedido.Items.Text:= dmCadParcelaPedido.carregaComboParcelaPedidoCodigo;
     dmCadParcelaPedido.inicializaConsultaParcelaPedido;
     dsParcelaPedido.DataSet := dmCadParcelaPedido.FDQueryCadParcelaPedido;
+
+    btnExcluir.Enabled := True;
+    btnAlterar.Enabled := True;
+    btnNovo.Enabled := True;
+
+    btnCancelar.Enabled := False;
+    btnSalvar.Enabled := False;
+
+    dbedtcodigo_parcela.Enabled := False;
+    dbcbbcodigo_pedido.Enabled := False;
+    dbcbbforma_pgto.Enabled := False;
+    dbedtvalor_parcela.Enabled := False;
+    dbedtdata_vencimento.Enabled := False;
 
     Exit;
   end;
@@ -246,5 +268,4 @@ procedure TformCadParcelaPedido.PesquisaParcelaPedidoChange(Sender: TObject);
 begin
   dmCadParcelaPedido.pesquisaParcelaPedido(PesquisaParcelaPedido.Text);
 end;
-
 end.

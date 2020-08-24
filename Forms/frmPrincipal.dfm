@@ -3,7 +3,7 @@ object formPrincipal: TformPrincipal
   Top = 0
   BorderStyle = bsSingle
   Caption = 'Agrotis - Sistemas para o Agroneg'#243'cio '
-  ClientHeight = 569
+  ClientHeight = 653
   ClientWidth = 1321
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -24,7 +24,7 @@ object formPrincipal: TformPrincipal
     Left = 0
     Top = 0
     Width = 1321
-    Height = 550
+    Height = 634
     Align = alClient
     AutoSize = True
     Center = True
@@ -10708,11 +10708,12 @@ object formPrincipal: TformPrincipal
     ExplicitLeft = -160
     ExplicitTop = 8
     ExplicitWidth = 1228
+    ExplicitHeight = 550
   end
   object imgLogo: TImage
-    Left = 256
+    Left = 312
     Top = 208
-    Width = 937
+    Width = 753
     Height = 310
     Center = True
     Picture.Data = {
@@ -11318,9 +11319,22 @@ object formPrincipal: TformPrincipal
       0FCAF884F23B4279040000000049454E44AE426082}
     Proportional = True
   end
+  object lbl1: TLabel
+    Left = 196
+    Top = 524
+    Width = 965
+    Height = 64
+    Caption = 'Sistemas inteligentes para o agroneg'#243'cio'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -53
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
   object statusRodape: TStatusBar
     Left = 0
-    Top = 550
+    Top = 634
     Width = 1321
     Height = 19
     Panels = <
@@ -11335,6 +11349,32 @@ object formPrincipal: TformPrincipal
         Alignment = taRightJustify
         Width = 100
       end>
+    ExplicitTop = 550
+  end
+  object Calendario: TCalendarView
+    Left = 8
+    Top = 8
+    Width = 233
+    Height = 257
+    Date = 44066.000000000000000000
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    HeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
+    HeaderInfo.DaysOfWeekFont.Color = clWindowText
+    HeaderInfo.DaysOfWeekFont.Height = -13
+    HeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
+    HeaderInfo.DaysOfWeekFont.Style = []
+    HeaderInfo.Font.Charset = DEFAULT_CHARSET
+    HeaderInfo.Font.Color = clWindowText
+    HeaderInfo.Font.Height = -20
+    HeaderInfo.Font.Name = 'Segoe UI'
+    HeaderInfo.Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    TodayColor = clTeal
   end
   object mmMenu: TMainMenu
     Left = 24
@@ -11344,22 +11384,22 @@ object formPrincipal: TformPrincipal
       object Produto1: TMenuItem
         Caption = 'Produto'
         object CadastroProduto1: TMenuItem
-          Caption = 'Cadastro Produto'
+          Caption = 'Produto'
           OnClick = CadastroProduto1Click
         end
       end
       object Pedido1: TMenuItem
         Caption = 'Pedido'
         object CadastroPedido1: TMenuItem
-          Caption = 'Cadastro Pedido'
+          Caption = 'Pedido'
           OnClick = CadastroPedido1Click
         end
         object ItemPedido1: TMenuItem
-          Caption = 'Cadastro Item Pedido'
+          Caption = 'Item Pedido'
           OnClick = ItemPedido1Click
         end
         object Parcelapedido1: TMenuItem
-          Caption = 'Cadastro Parcela Pedido'
+          Caption = ' Parcela Pedido'
           OnClick = Parcelapedido1Click
         end
       end
@@ -11377,6 +11417,10 @@ object formPrincipal: TformPrincipal
     end
     object Ajuda1: TMenuItem
       Caption = 'Ajuda'
+      object Suporte1: TMenuItem
+        Caption = 'Suporte Agrotis(online)'
+        OnClick = Suporte1Click
+      end
     end
   end
   object tmrStatus: TTimer

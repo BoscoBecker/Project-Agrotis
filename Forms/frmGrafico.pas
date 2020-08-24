@@ -20,8 +20,8 @@ type
     imgFundo: TImage;
     imgLogo: TImage;
     lblTitulo: TLabel;
-    shp1: TShape;
-    grp1: TGroupBox;
+    shpFundo: TShape;
+    grpgGrafico: TGroupBox;
     btnFechar: TButton;
     dbchtGraficoPedido: TDBChart;
     Series1: TBarSeries;

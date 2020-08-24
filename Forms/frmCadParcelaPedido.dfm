@@ -10712,7 +10712,7 @@ object formCadParcelaPedido: TformCadParcelaPedido
   end
   object lblTitulo: TLabel
     Left = 8
-    Top = 8
+    Top = 31
     Width = 537
     Height = 48
     Caption = 'Cadastro de Parcela de Pedido'
@@ -10724,8 +10724,8 @@ object formCadParcelaPedido: TformCadParcelaPedido
     ParentFont = False
   end
   object imgLogo: TImage
-    Left = 670
-    Top = 15
+    Left = 672
+    Top = 38
     Width = 205
     Height = 41
     Picture.Data = {
@@ -11467,6 +11467,7 @@ object formCadParcelaPedido: TformCadParcelaPedido
       Top = 12
       Width = 124
       Height = 21
+      Color = clInfoBk
       TabOrder = 1
       TextHint = 'Pesquisar Produtos'
       OnChange = PesquisaParcelaPedidoChange

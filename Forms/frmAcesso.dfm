@@ -11475,9 +11475,9 @@ object formAcesso: TformAcesso
   object lblInfo: TLabel
     Left = 27
     Top = 254
-    Width = 356
+    Width = 354
     Height = 21
-    Caption = 'Sistemas inteligentes para o Agroneg'#243'cio'
+    Caption = 'Sistemas inteligentes para o agroneg'#243'cio'
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite

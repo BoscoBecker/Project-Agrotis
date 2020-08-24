@@ -31,7 +31,7 @@ object formCadItemPedido: TformCadItemPedido
   object imgFundo: TImage
     Left = -10
     Top = 0
-    Width = 892
+    Width = 902
     Height = 89
     Center = True
     IncrementalDisplay = True
@@ -10714,7 +10714,7 @@ object formCadItemPedido: TformCadItemPedido
   end
   object lblTitulo: TLabel
     Left = 8
-    Top = 8
+    Top = 32
     Width = 438
     Height = 48
     Caption = 'Cadastro de Item Pedido'
@@ -10732,9 +10732,9 @@ object formCadItemPedido: TformCadItemPedido
     Height = 413
   end
   object imgLogo: TImage
-    Left = 657
-    Top = 15
-    Width = 205
+    Left = 654
+    Top = 39
+    Width = 230
     Height = 41
     Picture.Data = {
       0954506E67496D61676589504E470D0A1A0A0000000D494844520000065D0000
@@ -11460,6 +11460,7 @@ object formCadItemPedido: TformCadItemPedido
       Top = 29
       Width = 121
       Height = 21
+      Color = clInfoBk
       TabOrder = 1
       TextHint = 'Pesquisar Item P.'
       OnChange = edtpesquisaChange

@@ -10712,7 +10712,7 @@ object FormCadProduto: TFormCadProduto
   end
   object lblTitulo: TLabel
     Left = 8
-    Top = 8
+    Top = 32
     Width = 379
     Height = 48
     Caption = 'Cadastro de Produtos'
@@ -10725,7 +10725,7 @@ object FormCadProduto: TFormCadProduto
   end
   object imgLogo: TImage
     Left = 672
-    Top = 15
+    Top = 39
     Width = 205
     Height = 41
     Picture.Data = {
@@ -11446,6 +11446,7 @@ object FormCadProduto: TFormCadProduto
       Top = 12
       Width = 124
       Height = 21
+      Color = clInfoBk
       TabOrder = 1
       TextHint = 'Pesquisar Produtos'
       OnChange = edtPesquisaChange

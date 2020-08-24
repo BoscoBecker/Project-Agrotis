@@ -17,16 +17,16 @@ object formGraficoPedido: TformGraficoPedido
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object shp1: TShape
+  object shpFundo: TShape
     Left = 0
     Top = 90
-    Width = 883
+    Width = 884
     Height = 423
   end
   object imgFundo: TImage
     Left = -10
     Top = 0
-    Width = 893
+    Width = 896
     Height = 89
     Center = True
     IncrementalDisplay = True
@@ -11328,7 +11328,7 @@ object formGraficoPedido: TformGraficoPedido
     Font.Style = []
     ParentFont = False
   end
-  object grp1: TGroupBox
+  object grpgGrafico: TGroupBox
     Left = 8
     Top = 104
     Width = 867

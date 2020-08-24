@@ -93,7 +93,15 @@ begin
     Application.MessageBox(
       pchar('Erro ao Cancelar, Messagem de erro: ' + E.Message),
          'Erro ao Cancelar',MB_ICONERROR+MB_OK);
-  end; 
+  end;
+
+  if dmCadProduto.FDQueryProduto.IsEmpty then
+  begin
+    btnExcluir.Enabled := False;
+    btnSalvar.Enabled := False;
+    btnAlterar.Enabled := False;
+    btnCancelar.Enabled := False;
+  end;
 end;
 
 procedure TFormCadProduto.btnExcluirClick(Sender: TObject);
@@ -127,7 +135,7 @@ begin
     dmCadProduto.FDQueryProduto.Append;
   except on E: Exception do
     Application.MessageBox(
-      pchar('Erro ao criar um novo registro!, Messagem de erro:' + E.Message),        
+      pchar('Erro ao criar um novo registro!, Messagem de erro: ' + E.Message),
        'Erro ao criar um novo registro!',MB_ICONERROR+MB_OK);                 
   end;
   
@@ -150,8 +158,8 @@ begin
      string.Equals(Trim(dbmmodescricao.Lines.Text), EmptyStr)
   then
   begin
-    Application.MessageBox('Os Campos não podem estar vazios~',
-      'Campos vazios~',MB_ICONERROR+MB_OK);
+    Application.MessageBox('Os Campos não podem estar vazios!',
+      'Campos vazios',MB_ICONERROR+MB_OK);
     Exit;
   end;
 

@@ -112,6 +112,14 @@ begin
       pchar('Erro ao Cancelar, Messagem de erro: ' + E.Message),
          'Erro ao Cancelar',MB_ICONERROR+MB_OK);
   end;
+
+  if dmCadPedidoItem.FDQueryItemPedido.IsEmpty then
+  begin
+    btnExcluir.Enabled := False;
+    btnSalvar.Enabled := False;
+    btnAlterar.Enabled := False;
+    btnCancelar.Enabled := False;
+  end;
 end;
 
 procedure TformCadItemPedido.btnExcluirClick(Sender: TObject);
@@ -157,7 +165,7 @@ begin
     dmCadPedidoItem.FDQueryItemPedido.Append;
   except on E: Exception do
     Application.MessageBox(
-      pchar('Erro ao criar um novo registro!, Messagem de erro:' + E.Message),
+      pchar('Erro ao criar um novo registro!, Messagem de erro: ' + E.Message),
        'Erro ao criar um novo registro!',MB_ICONERROR+MB_OK);
   end;
 
@@ -178,7 +186,6 @@ end;
 procedure TformCadItemPedido.btnSalvarClick(Sender: TObject);
 var codigoPedido: Integer;
 begin
-  codigoPedido:= StrToInt(dbgrdItemPedido.Columns[1].Field.Value);
 
   if string.Equals(Trim(dbcbbcodigo.Text), EmptyStr) or
      string.Equals(Trim(dblkcbbcodigo_produto.Text), EmptyStr) or
@@ -186,17 +193,21 @@ begin
      string.Equals(Trim(dbedtvalor_unit.Text), EmptyStr)
   then
   begin
-    Application.MessageBox('Os Campos não podem estar vazios',
+    Application.MessageBox('Os Campos não podem estar vazios!',
       'Campos vazios',MB_ICONERROR+MB_OK);
     Exit;
   end;
+
+  codigoPedido:= StrToInt(dbgrdItemPedido.Columns[1].Field.Value);
+
 
   try
     dmCadPedidoItem.FDQueryItemPedido.Post;
   except on E: Exception do
     begin
       Application.MessageBox(
-        pchar('Erro ao Salvar, Messagem de erro:' + E.Message),
+        pchar('Erro ao Salvar, Messagem de erro: ' + E.Message +
+        ' DICA: TALVEZ O PEDIDO/PRODUTO JÁ ESTEJA CADASTRADO. '),
          'Erro ao Salvar',MB_ICONERROR+MB_OK);
       Exit;
     end;
@@ -251,5 +262,4 @@ procedure TformCadItemPedido.edtpesquisaChange(Sender: TObject);
 begin
   dmCadPedidoItem.pesquisaItemPedido(edtpesquisa.Text);
 end;
-
 end.
