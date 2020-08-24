@@ -22,12 +22,14 @@ Tipo Operação - Entrada/Saída
 Total do Pedido (calculado a partir do somatório do TOTAL DOS ITENS)
 ==========================================
 ITENS DO PEDIDO
+Código pedido
 Código do Produto
 Quantidade
 Valor Unitário
 Total do item
 ===========================================
 PARCELA DO PEDIDO
+Código pedido
 Código da Parcela
 Forma de Pagamento (A Vista - A Prazo)
 Data de Vencimento
