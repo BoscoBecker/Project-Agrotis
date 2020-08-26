@@ -35,9 +35,7 @@ uses UdmConexao;
 procedure TdmCadProduto.inicializaConsultaProduto;
 begin
   Try
-    if string.Equals(FDQueryProduto.ConnectionName, EmptyStr) then
-      FDQueryProduto.connection := UdmConexao.dmConexao.getConnection;
-
+    FDQueryProduto.connection := dmconexao.getConnection;
     FDQueryProduto.Close;
     FDQueryProduto.SQL.Clear;
     FDQueryProduto.SQL.Text :=

@@ -82,8 +82,8 @@ end;
 function TdmCadParcelaPedido.parcelamentoPedidoValido(
   const valorParcela: Integer; codigo_pedido: integer): Boolean;
 begin
-  if string.Equals(FDQueryValidaParcelamentoPedido.ConnectionName, EmptyStr) then
-    FDQueryValidaParcelamentoPedido.connection := UdmConexao.dmConexao.getConnection;
+  //if string.Equals(FDQueryValidaParcelamentoPedido.ConnectionName, EmptyStr) then
+  //FDQueryValidaParcelamentoPedido.connection := UdmConexao.dmConexao.getConnection;
 
   FDQueryValidaParcelamentoPedido.Close;
   FDQueryValidaParcelamentoPedido.SQL.Clear;
@@ -93,6 +93,7 @@ begin
   FDQueryValidaParcelamentoPedido.Open;
 
   result := (valorParcela > FDQueryValidaParcelamentoPedido.Fields[0].AsInteger);
+  FDQueryValidaParcelamentoPedido.Close;
 end;
 
 procedure TdmCadParcelaPedido.pesquisaParcelaPedido(const conteudo: string);

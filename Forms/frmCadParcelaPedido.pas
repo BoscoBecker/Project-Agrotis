@@ -39,13 +39,13 @@ type
     dbedtcodigo_parcela: TDBEdit;
     PesquisaParcelaPedido: TSearchBox;
     procedure btnFecharClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure PesquisaParcelaPedidoChange(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -246,7 +246,7 @@ begin
   dbedtdata_vencimento.Enabled := False;
 end;
 
-procedure TformCadParcelaPedido.FormCreate(Sender: TObject);
+procedure TformCadParcelaPedido.FormShow(Sender: TObject);
 begin
   dbcbbcodigo_pedido.Items.Text:= dmCadParcelaPedido.carregaComboParcelaPedidoCodigo;
 

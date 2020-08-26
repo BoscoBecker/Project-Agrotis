@@ -14,7 +14,7 @@ object formCadItemPedido: TformCadItemPedido
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object shpFundo: TShape

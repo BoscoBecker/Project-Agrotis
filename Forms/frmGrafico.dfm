@@ -14,7 +14,7 @@ object formGraficoPedido: TformGraficoPedido
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object shpFundo: TShape
@@ -10708,8 +10708,8 @@ object formGraficoPedido: TformGraficoPedido
     Stretch = True
   end
   object imgLogo: TImage
-    Left = 670
-    Top = 15
+    Left = 672
+    Top = 31
     Width = 205
     Height = 41
     Picture.Data = {
@@ -11317,7 +11317,7 @@ object formGraficoPedido: TformGraficoPedido
   end
   object lblTitulo: TLabel
     Left = 8
-    Top = 8
+    Top = 24
     Width = 324
     Height = 48
     Caption = 'Gr'#225'fico de Pedido '
@@ -11508,20 +11508,7 @@ object formGraficoPedido: TformGraficoPedido
       OnClick = btnImprimirClick
     end
   end
-  object FDConnectionGrafico: TFDConnection
-    Params.Strings = (
-      'Database=dbAgrotis'
-      'User_Name=delphi'
-      'Password=delphi'
-      'Server=DESKTOP-FPNQ6CD'
-      'DriverID=MSSQL')
-    Connected = True
-    Left = 776
-    Top = 112
-  end
   object FDQueryGrafico: TFDQuery
-    Active = True
-    Connection = FDConnectionGrafico
     SQL.Strings = (
       'select * from pedido')
     Left = 816

@@ -31,7 +31,6 @@ type
     dbedtcodigo_produto: TDBEdit;
     dbmmodescricao: TDBMemo;
     edtPesquisa: TSearchBox;
-    procedure FormCreate(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
@@ -39,6 +38,7 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure edtPesquisaChange(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,7 +53,7 @@ implementation
 
 {$R *.dfm}
 
-uses UdmCadProduto;
+uses UdmCadProduto, UdmConexao, frmConfiguraDB;
 
 procedure TFormCadProduto.btnAlterarClick(Sender: TObject);
 begin
@@ -182,8 +182,8 @@ begin
   btnSalvar.Enabled := False;
 end;
 
-procedure TFormCadProduto.FormCreate(Sender: TObject);
-begin  
+procedure TFormCadProduto.FormShow(Sender: TObject);
+begin
   dmCadProduto.inicializaConsultaProduto;
   dsProduto.DataSet := dmCadProduto.FDQueryProduto;
 
@@ -197,6 +197,7 @@ begin
 
   btnSalvar.Enabled := False;
 end;
+
 procedure TFormCadProduto.edtPesquisaChange(Sender: TObject);
 begin
   try

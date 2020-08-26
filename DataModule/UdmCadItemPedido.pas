@@ -52,6 +52,7 @@ begin
   lista := TStringList.Create();
 
   try
+    FDQueryItemPedidoPedido.Close;
     FDQueryItemPedidoPedido.Connection := UdmConexao.dmConexao.getConnection;
     FDQueryItemPedidoPedido.Close;
     FDQueryItemPedidoPedido.SQL.Clear;
@@ -73,8 +74,8 @@ end;
 
 procedure TdmCadPedidoItem.carregaComboItemPedidoCodigoProduto;
 begin
-  FDQueryItemPedidoProduto.Connection := UdmConexao.dmConexao.getConnection;
   FDQueryItemPedidoProduto.Close;
+  FDQueryItemPedidoProduto.Connection := UdmConexao.dmConexao.getConnection;
   FDQueryItemPedidoProduto.SQL.Clear;
   FDQueryItemPedidoProduto.SQL.Text :=
   'SELECT codigo_produto,descricao FROM PRODUTO ';

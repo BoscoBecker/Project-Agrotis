@@ -42,7 +42,6 @@ type
     btnFechar: TButton;
     lblExemplo: TLabel;
     edtPesquisa: TSearchBox;
-    procedure FormCreate(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
@@ -50,6 +49,7 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure edtPesquisaChange(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -226,7 +226,7 @@ begin
   dbedtTotalPedido.Enabled := False;
 end;
 
-procedure TformCadPedido.FormCreate(Sender: TObject);
+procedure TformCadPedido.FormShow(Sender: TObject);
 begin
   dmCadPedido.inicializaConsultaPedido;
   dsPedido.DataSet := dmCadPedido.FDQueryPedido;
@@ -241,6 +241,7 @@ begin
 
   btnSalvar.Enabled := False;
 end;
+
 procedure TformCadPedido.edtPesquisaChange(Sender: TObject);
 begin
   dmCadPedido.pesquisaPedido(edtPesquisa.Text);

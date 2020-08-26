@@ -1,5 +1,5 @@
 object dmCadProduto: TdmCadProduto
-  OldCreateOrder = False
+  OldCreateOrder = True
   Height = 201
   Width = 352
   object FDQueryProduto: TFDQuery

@@ -33,7 +33,7 @@ implementation
 
 {$R *.dfm}
 
-uses frmPrincipal;
+uses frmPrincipal, frmConfiguraDB;
 
 procedure TformAcesso.btnAcessoClick(Sender: TObject);
 begin

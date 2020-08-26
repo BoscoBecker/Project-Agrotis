@@ -13,24 +13,26 @@ uses
   UdmCadPedido in 'DataModule\UdmCadPedido.pas' {dmCadPedido: TDataModule},
   UdmCadItemPedido in 'DataModule\UdmCadItemPedido.pas' {dmCadPedidoItem: TDataModule},
   UdmCadParcelaPedido in 'DataModule\UdmCadParcelaPedido.pas' {dmCadParcelaPedido: TDataModule},
-  frmGrafico in 'Forms\frmGrafico.pas' {formGraficoPedido};
+  frmGrafico in 'Forms\frmGrafico.pas' {formGraficoPedido},
+  frmConfiguraDB in 'Forms\frmConfiguraDB.pas' {formConfiguraDB};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TdmConexao, dmConexao);
   Application.CreateForm(TformAcesso, formAcesso);
-  Application.CreateForm(TdmCadProduto, dmCadProduto);
-  Application.CreateForm(TdmCadPedido, dmCadPedido);
-  Application.CreateForm(TdmCadPedidoItem, dmCadPedidoItem);
-  Application.CreateForm(TdmCadParcelaPedido, dmCadParcelaPedido);
   Application.CreateForm(TformPrincipal, formPrincipal);
   Application.CreateForm(TFormCadProduto, FormCadProduto);
   Application.CreateForm(TformCadPedido, formCadPedido);
   Application.CreateForm(TformCadItemPedido, formCadItemPedido);
   Application.CreateForm(TformCadParcelaPedido, formCadParcelaPedido);
+  Application.CreateForm(TdmConexao, dmConexao);
+  Application.CreateForm(TdmCadProduto, dmCadProduto);
+  Application.CreateForm(TdmCadPedido, dmCadPedido);
+  Application.CreateForm(TdmCadPedidoItem, dmCadPedidoItem);
+  Application.CreateForm(TdmCadParcelaPedido, dmCadParcelaPedido);
   Application.CreateForm(TformGraficoPedido, formGraficoPedido);
+  Application.CreateForm(TformConfiguraDB, formConfiguraDB);
   Application.Run;
 end.

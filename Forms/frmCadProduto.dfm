@@ -4,7 +4,7 @@ object FormCadProduto: TFormCadProduto
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Cadastro e pesquisa de produtos'
-  ClientHeight = 516
+  ClientHeight = 524
   ClientWidth = 885
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,14 +14,14 @@ object FormCadProduto: TFormCadProduto
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object shpFundo: TShape
     Left = 0
     Top = 0
     Width = 885
-    Height = 516
+    Height = 524
     Align = alClient
     ExplicitWidth = 788
     ExplicitHeight = 392

@@ -14,7 +14,7 @@ object formCadParcelaPedido: TformCadParcelaPedido
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object shp2: TShape
@@ -11548,7 +11548,7 @@ object formCadParcelaPedido: TformCadParcelaPedido
     object lblExemplo: TLabel
       Left = 588
       Top = 55
-      Width = 256
+      Width = 209
       Height = 16
       Alignment = taCenter
       Caption = 'Exemplo: mes/dia/ano (12/01/2020)'

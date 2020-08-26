@@ -11349,12 +11349,11 @@ object formPrincipal: TformPrincipal
         Alignment = taRightJustify
         Width = 100
       end>
-    ExplicitTop = 550
   end
   object Calendario: TCalendarView
     Left = 8
     Top = 8
-    Width = 233
+    Width = 209
     Height = 257
     Date = 44066.000000000000000000
     Font.Charset = DEFAULT_CHARSET
@@ -11410,6 +11409,10 @@ object formPrincipal: TformPrincipal
         Caption = 'Pedido em percetuais'
         OnClick = Pedidoem1Click
       end
+    end
+    object ConfigurarBase1: TMenuItem
+      Caption = 'Configurar Base'
+      OnClick = ConfigurarBase1Click
     end
     object Sobre1: TMenuItem
       Caption = 'Sobre'

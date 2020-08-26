@@ -4,11 +4,7 @@ object dmConexao: TdmConexao
   Width = 355
   object connectionSSMS: TFDConnection
     Params.Strings = (
-      'Database=dbagrotis'
-      'Server=DESKTOP-FPNQ6CD'
       'OSAuthent=No'
-      'User_Name=delphi'
-      'Password=delphi'
       'DriverID=MSSQL')
     LoginPrompt = False
     Left = 144

@@ -14,7 +14,7 @@ object formCadPedido: TformCadPedido
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object shpFundo: TShape
@@ -11571,7 +11571,7 @@ object formCadPedido: TformCadPedido
     end
     object lblNroPedido: TLabel
       Left = 16
-      Top = 90
+      Top = 86
       Width = 78
       Height = 19
       Caption = 'N'#186' Pedido:'
@@ -11583,8 +11583,8 @@ object formCadPedido: TformCadPedido
       ParentFont = False
     end
     object lblTipoOperacao: TLabel
-      Left = 324
-      Top = 19
+      Left = 319
+      Top = 21
       Width = 110
       Height = 19
       Caption = 'Tipo Opera'#231#227'o:'
@@ -11598,7 +11598,7 @@ object formCadPedido: TformCadPedido
     object lblExemplo: TLabel
       Left = 588
       Top = 48
-      Width = 228
+      Width = 209
       Height = 16
       Alignment = taCenter
       Caption = 'Exemplo: mes/dia/ano (12/01/2020)'
@@ -11635,7 +11635,7 @@ object formCadPedido: TformCadPedido
     end
     object dbedtNumeroPedido: TDBEdit
       Left = 112
-      Top = 92
+      Top = 88
       Width = 121
       Height = 21
       Align = alCustom
@@ -11668,7 +11668,7 @@ object formCadPedido: TformCadPedido
     end
     object dbedtTotalPedido: TDBEdit
       Left = 440
-      Top = 92
+      Top = 88
       Width = 121
       Height = 21
       Align = alCustom

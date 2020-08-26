@@ -20,16 +20,16 @@ type
 
   public
     { Public declarations }
-
-
     procedure disconnectConnection;
+    procedure setConnection(_DriverID, _Server, _Database, _User_name, _Password : String);
     function getConnection : TFDConnection;
     function getVersionMSSQLSERVER : string;
-
-  end;
+    function baseConectada : Boolean;
+ end;
 
 var
   dmConexao: TdmConexao;
+  DriverID, Server, Database, User_name, Password : String ;
 
 implementation
 
@@ -41,6 +41,23 @@ implementation
 
 { TdmConexao }
 
+function TdmConexao.baseConectada: Boolean;
+begin
+  result := True;
+  connectionSSMS.ConnectionName := 'TFDConnection : ' + FormatDateTime('HH:MM:SS', now);
+  connectionSSMS.Params.Clear;
+  connectionSSMS.Params.Values['DriverID']  := DriverID;
+  connectionSSMS.Params.Values['Server'] := Server;
+  connectionSSMS.Params.Values['Database'] := Database;
+  connectionSSMS.Params.Values['User_name'] := User_name ;
+  connectionSSMS.Params.Values['Password'] := Password;
+  try
+    connectionSSMS.Connected := True;
+  except on E: Exception do
+    result := False;
+  end;
+end;
+
 procedure TdmConexao.disconnectConnection;
 begin
   connectionSSMS.Connected := False;
@@ -48,7 +65,21 @@ end;
 
 function TdmConexao.getConnection: TFDConnection;
 begin
+  result := connectionSSMS;
+
+  if Trim(DriverID) = '' then
+  begin
+    ShowMessage('A conexão não pode estar vazia');
+    Exit;
+  end;
+
   connectionSSMS.ConnectionName := 'TFDConnection : ' + FormatDateTime('HH:MM:SS', now);
+  connectionSSMS.Params.Clear;
+  connectionSSMS.Params.Values['DriverID']  := DriverID;
+  connectionSSMS.Params.Values['Server'] := Server;
+  connectionSSMS.Params.Values['Database'] := Database;
+  connectionSSMS.Params.Values['User_name'] := User_name ;
+  connectionSSMS.Params.Values['Password'] := Password;
   connectionSSMS.Connected := True;
 
   result := connectionSSMS;
@@ -69,6 +100,16 @@ begin
   fdQueryAux.Close;
 
   result := value;
+end;
+
+procedure TdmConexao.setConnection(_DriverID, _Server, _Database, _User_name,
+  _Password: String);
+begin
+  DriverID:= _DriverID;
+  Server:= _Server;
+  Database:= _Database;
+  User_name:= _User_name;
+  Password:= _Password;
 end;
 
 end.

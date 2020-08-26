@@ -39,13 +39,13 @@ type
     dbcbbcodigo: TDBComboBox;
     dblkcbbcodigo_produto: TDBLookupComboBox;
     procedure btnFecharClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure edtpesquisaChange(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -238,8 +238,11 @@ begin
   dbedttotal_item.Enabled := False;
 end;
 
-procedure TformCadItemPedido.FormCreate(Sender: TObject);
+procedure TformCadItemPedido.FormShow(Sender: TObject);
 begin
+  dmCadPedidoItem.inicializaConsultaItemPedido;
+  dsItemPedido.DataSet := dmCadPedidoItem.FDQueryItemPedido;
+
   dbcbbcodigo.Items.Text:= dmCadPedidoItem.carregaComboItemPedidoCodigoPedido;
 
   dmCadPedidoItem.carregaComboItemPedidoCodigoProduto;
@@ -258,6 +261,7 @@ begin
 
   btnSalvar.Enabled := False;
 end;
+
 procedure TformCadItemPedido.edtpesquisaChange(Sender: TObject);
 begin
   dmCadPedidoItem.pesquisaItemPedido(edtpesquisa.Text);

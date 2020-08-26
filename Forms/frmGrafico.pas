@@ -15,7 +15,6 @@ uses
 
 type
   TformGraficoPedido = class(TForm)
-    FDConnectionGrafico: TFDConnection;
     FDQueryGrafico: TFDQuery;
     imgFundo: TImage;
     imgLogo: TImage;
@@ -28,7 +27,7 @@ type
     btnImprimir: TButton;
     procedure btnImprimirClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,6 +41,8 @@ implementation
 
 {$R *.dfm}
 
+uses UdmConexao;
+
 procedure TformGraficoPedido.btnFecharClick(Sender: TObject);
 begin
   Close;
@@ -53,8 +54,9 @@ begin
   dbchtGraficoPedido.Print;
 end;
 
-procedure TformGraficoPedido.FormCreate(Sender: TObject);
+procedure TformGraficoPedido.FormShow(Sender: TObject);
 begin
+  FDQueryGrafico.Connection := dmconexao.getConnection;
   FDQueryGrafico.Close;
   FDQueryGrafico.Open;
 end;

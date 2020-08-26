@@ -11,6 +11,7 @@ object dmCadParcelaPedido: TdmCadParcelaPedido
     Top = 24
   end
   object FDQueryValidaParcelamentoPedido: TFDQuery
+    Connection = dmConexao.connectionSSMS
     Left = 88
     Top = 144
   end

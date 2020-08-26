@@ -29,6 +29,7 @@ type
     Suporte1: TMenuItem;
     lbl1: TLabel;
     Calendario: TCalendarView;
+    ConfigurarBase1: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CadastroPedido1Click(Sender: TObject);
@@ -40,6 +41,7 @@ type
     procedure tmrStatusTimer(Sender: TObject);
     procedure Pedidoem1Click(Sender: TObject);
     procedure Suporte1Click(Sender: TObject);
+    procedure ConfigurarBase1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -54,18 +56,46 @@ implementation
 {$R *.dfm}
 
 uses frmAcesso, frmCadProduto, frmCadPedido,frmCadItemPedido,
-  frmCadParcelaPedido, UdmConexao, frmGrafico;
+  frmCadParcelaPedido, UdmConexao, frmGrafico, frmConfiguraDB;
 
 procedure TformPrincipal.CadastroPedido1Click(Sender: TObject);
 begin
+  if not dmconexao.baseConectada then
+  begin
+    if formConfiguraDB = nil then
+      formConfiguraDB := TformConfiguraDB.Create(nil);
+
+    formConfiguraDB.ShowModal;
+  end;
+
+  if not dmconexao.baseConectada then
+    exit;
+
   FormCadPedido := TFormCadPedido.Create(Self);
   FormCadPedido.ShowModal;
 end;
 
 procedure TformPrincipal.CadastroProduto1Click(Sender: TObject);
 begin
+  if not dmconexao.baseConectada then
+  begin
+    if formConfiguraDB = nil then
+      formConfiguraDB := TformConfiguraDB.Create(nil);
+
+    formConfiguraDB.ShowModal;
+  end;
+
+  if not dmconexao.baseConectada then
+    exit;
+
   FormCadProduto := TFormCadProduto.Create(self);
   FormCadProduto.ShowModal;
+end;
+
+procedure TformPrincipal.ConfigurarBase1Click(Sender: TObject);
+begin
+  formConfiguraDB := TformConfiguraDB.Create(self);
+  formConfiguraDB.ShowModal;
 end;
 
 procedure TformPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -91,18 +121,51 @@ end;
 
 procedure TformPrincipal.ItemPedido1Click(Sender: TObject);
 begin
+  if not dmconexao.baseConectada then
+  begin
+    if formConfiguraDB = nil then
+      formConfiguraDB := TformConfiguraDB.Create(nil);
+
+    formConfiguraDB.ShowModal;
+  end;
+
+  if not dmconexao.baseConectada then
+    exit;
+
   FormCadItemPedido := TFormCadItemPedido.Create(self);
   FormCadItemPedido.ShowModal;
 end;
 
 procedure TformPrincipal.Parcelapedido1Click(Sender: TObject);
 begin
+  if not dmconexao.baseConectada then
+  begin
+    if formConfiguraDB = nil then
+      formConfiguraDB := TformConfiguraDB.Create(nil);
+
+    formConfiguraDB.ShowModal;
+  end;
+
+  if not dmconexao.baseConectada then
+    exit;
+
   FormCadParcelaPedido := TFormCadParcelaPedido.Create(Self);
   FormCadParcelaPedido.ShowModal;
 end;
 
 procedure TformPrincipal.Pedidoem1Click(Sender: TObject);
 begin
+  if not dmconexao.baseConectada then
+  begin
+    if formConfiguraDB = nil then
+      formConfiguraDB := TformConfiguraDB.Create(nil);
+
+    formConfiguraDB.ShowModal;
+  end;
+
+  if not dmconexao.baseConectada then
+    exit;
+
   formGraficoPedido := TformGraficoPedido.Create(self);
   formGraficoPedido.ShowModal;
 end;
