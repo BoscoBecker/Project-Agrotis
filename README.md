@@ -1,4 +1,4 @@
-## Projeto para testes(Agrotis)
+## Projeto Agrotis
 ![Screenshot](Imagens/printAgrotisSistema.png)
 
 
@@ -15,23 +15,9 @@ Usando o IDE de desenvolvimento Embarcadero RAD Studio 10.2 Tokyo Architect 25.0
 ## Foi realizado um Bakcup da Base de dados, só restaurar, está na raiz do projeto pasta chamada de "DataBase", compactado.	 
 
 ## Informações de acesso a base de dados e conexão do sistemas.
-* Para o funcionamento correto banco na aplicação, deve-se configurar o IP ou hostname onde esta a base de dados
-dbAgrotis, sendo assim no Delphi, deve se configurar duas conexões, segue abaixo:
 
-* Para a geração de gráfico
-* Local: formGraficoPedido > FDConnectionGrafico(componente) "Duplo clique"
-
-* Conexão geral do sistema
-* Local: UdmConexao.pas >  connectionSSMS(componente)  "Duplo clique"
-
-* String de conexão para ser inserida nas configurações dos 2 componentes
-
-* Database=dbagrotis
-* Server=DESKTOP-FPNQ6CD    * SEU IP OU HOSTNAME *
-* OSAuthent=No
-* User_Name=delphi
-* Password=delphi
-* DriverID=MSSQL
+* A configuração da Base de dados pode ser realizado no menu do sistem em:
+Menu > Configurar Base
 
 ## Maquina usada para o desenvolvimento
 * Processador: AMD 1.0 Ghz
