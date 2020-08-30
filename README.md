@@ -1,4 +1,6 @@
 ## Projeto para testes(Agrotis)
+![Screenshot](Imagens/printAgrotisSistema.png)
+
 
 ## Tecnologia
 Usando o IDE de desenvolvimento Embarcadero RAD Studio 10.2 Tokyo Architect 25.0.26309.314
@@ -37,3 +39,17 @@ dbAgrotis, sendo assim no Delphi, deve se configurar duas conexões, segue abaix
 * OS WIndows 10 Pro 64 Bits
 
 MAKE WITH LOVE - BOSCOBECKER
+
+object FDConnectionGrafico: TFDConnection
+  Params.Strings = (
+    'Database=dbAgrotis'
+    'User_Name=delphi'
+    'Password=delphi'
+    'Server=DESKTOP-FPNQ6CD'
+    'DriverID=MSSQL')
+  Connected = True
+  Left = 776
+  Top = 112
+end
+
+
