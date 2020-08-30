@@ -24,18 +24,4 @@ Menu > Configurar Base
 * Memoria RAM : 6.0 GB
 * OS WIndows 10 Pro 64 Bits
 
-MAKE WITH LOVE - BOSCOBECKER
-
-object FDConnectionGrafico: TFDConnection
-  Params.Strings = (
-    'Database=dbAgrotis'
-    'User_Name=delphi'
-    'Password=delphi'
-    'Server=DESKTOP-FPNQ6CD'
-    'DriverID=MSSQL')
-  Connected = True
-  Left = 776
-  Top = 112
-end
-
-
+Make with love - @boscobecker
