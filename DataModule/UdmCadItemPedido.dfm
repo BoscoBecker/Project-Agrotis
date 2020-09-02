@@ -7,7 +7,6 @@ object dmCadPedidoItem: TdmCadPedidoItem
     Top = 136
   end
   object FDQueryItemPedidoProduto: TFDQuery
-    Connection = dmConexao.connectionSSMS
     Left = 104
     Top = 32
   end
@@ -16,6 +15,7 @@ object dmCadPedidoItem: TdmCadPedidoItem
     Top = 80
   end
   object FDCommandAtualizaTotalPedido: TFDCommand
+    Connection = dmConexao.connectionSSMS
     CommandText.Strings = (
       'UPDATE PEDIDO '
       

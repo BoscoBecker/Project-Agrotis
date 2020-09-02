@@ -172,7 +172,7 @@ begin
 end;
 
 procedure TformCadParcelaPedido.btnSalvarClick(Sender: TObject);
-var codigoPedido, valorParcela : Integer;
+  var codigoPedido, valorParcela : Integer;
 begin
   if string.Equals(Trim(dbedtcodigo_parcela.Text), EmptyStr) or
      string.Equals(Trim(dbcbbcodigo_pedido.Text), EmptyStr) or
@@ -195,13 +195,9 @@ begin
     Application.MessageBox(
       PChar('O TOTAL DA(S) '+'[ '+IntToStr(valorParcela)+' ]'+' PARCELA(S) NÃO PODE SER '+
             'MAIOR DO QUE O TOTAL DO PEDIDO, CÓDIGO '+'[ '+IntToStr(codigoPedido)+' ] !!!'),
-            'VALIDAÇÃO', MB_ICONSTOP+MB_OK);
+            'VALIDAÇÃO', MB_ICONWARNING+MB_OK);
 
     dmCadParcelaPedido.FDQueryCadParcelaPedido.Cancel;
-
-    dbcbbcodigo_pedido.Items.Text:= dmCadParcelaPedido.carregaComboParcelaPedidoCodigo;
-    dmCadParcelaPedido.inicializaConsultaParcelaPedido;
-    dsParcelaPedido.DataSet := dmCadParcelaPedido.FDQueryCadParcelaPedido;
 
     btnExcluir.Enabled := True;
     btnAlterar.Enabled := True;
