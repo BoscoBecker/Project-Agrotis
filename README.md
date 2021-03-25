@@ -1,5 +1,5 @@
 ## Challenge to join as a Developer Delphi Agrotis Curitiba, Paraná.
-! [Screenshot](Imagens/printAgrotisSistema.png)
+![Screenshot](Imagens/printAgrotisSistema.png)
 
 
 ## Technology
