@@ -22,6 +22,6 @@ Menu> Configure Base
 ## Machine used for development
 * Processor: AMD 1.0 Ghz
 * RAM: 6.0 GB
-* WIndows 10 Pro 64 Bit
+* WIndows 10 Pro 64 Bit 
 
 Make with ❤ - @boscobecker
